@@ -26,236 +26,216 @@
 }<br>
 </style><br>
 <meta charset="UTF-8"><br>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><br>
-<title>Batalha do Crescimento - V100</title><br>
-<style>button{pointer-events:auto !important;position:relative;z-index:10 !important;touch-action:manipulation;-webkit-tap-highlight-color:rgba(255,122,0,.4);cursor:pointer}body{touch-action:manipulation}#overlay{pointer-events:none !important;visibility:hidden;opacity:0}#overlay.aberto{pointer-events:auto !important;visibility:visible;opacity:1}</style></head><br>
-<body style="margin:0;padding:0;background:#0B0B14;color:#fff;font-family:Arial,sans-serif;display:flex;justify-content:center"><br>
-<div style="width:100%;max-width:430px;min-height:100dvh;display:flex;flex-direction:column;gap:6px;padding:8px;box-sizing:border-box;background:#0B0B14"></p>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"><br>
+<meta name="cache-control" content="no-cache, no-store, must-revalidate"><br>
+<title>Batalha do Crescimento - V101</title><br>
+<style><br>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}<br>
+body{margin:0;background:#0d0d11;color:#fff;font-family:-apple-system,BlinkMacSystemFont,<q>Segoe UI</q>,Roboto,Arial,sans-serif;padding-bottom:30px}<br>
+.wrap{max-width:430px;margin:0 auto;padding:10px 10px 20px}<br>
+.top{background:#22c55e;color:#fff;text-align:center;font-weight:800;font-size:13px;padding:9px 6px;border-radius:10px}<br>
+.header{text-align:center;margin:12px 0 8px}<br>
+.header h1{font-size:21px;margin:0;letter-spacing:.5px}<br>
+.header p{margin:4px 0 0;color:#fbbf24;font-size:12px;font-weight:700;letter-spacing:1px}<br>
+.round-card{background:#1a1a22;border:1px solid #2a2a35;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}<br>
+.round-card b{font-size:13px}<br>
+.round-card span{font-size:12px;color:#a1a1aa;display:block;margin-top:2px}<br>
+.use{background:#f59e0b;border:0;color:#000;font-weight:800;padding:8px 12px;border-radius:999px;font-size:12px;cursor:pointer}<br>
+.card{background:#15151c;border:1px solid #26262f;border-radius:16px;padding:12px;margin-top:12px}<br>
+.card h3{margin:0 0 10px;font-size:12px;letter-spacing:1px;color:#d4d4d8}<br>
+.timer{display:flex;align-items:center;justify-content:space-between;text-align:center}<br>
+.timer .team{flex:1}<br>
+.timer .team small{font-size:11px;letter-spacing:1px;color:#a1a1aa}<br>
+.timer .team div{font-size:34px;font-weight:900;line-height:1}<br>
+.red{color:#ff3b3b}.blue{color:#3b82f6}<br>
+.center{flex:1}<br>
+.center .time{font-size:34px;font-weight:900}<br>
+.center small{font-size:11px;color:#a1a1aa}<br>
+.durations{display:flex;gap:8px;margin-top:12px}<br>
+.durations button{flex:1;padding:9px 0;border-radius:999px;border:1px solid #333;background:#1e1e26;color:#fff;font-weight:700;cursor:pointer;touch-action:manipulation}<br>
+.durations button.active{background:#fff;color:#000}<br>
+.controls{display:flex;gap:8px;margin-top:8px}<br>
+.controls button{flex:1;padding:11px 0;border-radius:10px;border:0;font-weight:800;cursor:pointer;touch-action:manipulation}<br>
+.btn-start{background:#22c55e;color:#fff}<br>
+.btn-min{background:#27272a;color:#fff}<br>
+.btn-zero{background:#27272a;color:#fff}<br>
+.btn-restart{background:#27272a;color:#fff}<br>
+.war-top{display:flex;justify-content:space-between;font-size:13px;font-weight:800}<br>
+.war{height:18px;background:#3b82f6;border-radius:999px;overflow:hidden;display:flex;margin:8px 0}<br>
+.war #barRed{background:#ef4444;transition:width .25s}<br>
+.war #barBlue{background:#3b82f6;transition:width .25s}<br>
+.vidas{display:flex;gap:10px}<br>
+.vida{flex:1;background:#1e1e26;border-radius:12px;padding:8px;text-align:center;font-size:12px}<br>
+.vida b{font-size:14px}<br>
+.teams{display:flex;gap:10px;margin-top:12px}<br>
+.team-card{flex:1;border-radius:16px;padding:12px}<br>
+.team-card.red-card{background:#2a1214;border:2px solid #ef4444}<br>
+.team-card.blue-card{background:#101a2e;border:2px solid #3b82f6}<br>
+.team-card h4{margin:0 0 10px;text-align:center;font-size:13px}<br>
+.team-card button{width:100%;display:block;margin-bottom:8px;padding:13px 6px;border-radius:12px;border:0;font-weight:800;font-size:13px;cursor:pointer;touch-action:manipulation;transition:transform .08s}<br>
+.team-card button:active{transform:scale(.96)}<br>
+.team-card .b1{background:#fff;color:#111}<br>
+.team-card .b5{background:#e5e5e5;color:#111}<br>
+.team-card .b10{background:#fff;color:#111;border:1px solid #fbbf24}<br>
+.hist{font-size:13px;color:#d4d4d8}<br>
+.hist-item{background:#1e1e26;padding:8px 10px;border-radius:10px;margin-bottom:6px}<br>
+.toques{background:#1a1a22;border:1px solid #2a2a35;border-radius:12px;padding:10px;margin-top:12px;font-size:12px;line-height:1.5;color:#d4d4d8}<br>
+.toques b{color:#fff}<br>
+.rounds{display:flex;gap:8px;margin-top:12px}<br>
+.rounds button{flex:1;padding:11px 0;border-radius:10px;border:0;background:#27272a;color:#fff;font-weight:800;cursor:pointer;touch-action:manipulation}<br>
+.rounds button.active{background:#fff;color:#000}<br>
+.rounds button.next{background:#7c3aed;color:#fff}<br>
+.winner-btn{width:100%;margin-top:10px;padding:15px;border:0;border-radius:12px;background:#f97316;color:#fff;font-weight:900;font-size:15px;cursor:pointer;touch-action:manipulation}<br>
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}<br>
+.overlay.show{display:flex}<br>
+.overlay-box{background:#1a1a22;border-radius:20px;padding:24px;text-align:center;width:100%;max-width:360px}<br>
+.overlay-box h2{margin:0 0 8px;font-size:24px}<br>
+.overlay-box p{color:#d4d4d8}<br>
+.overlay-box button{width:100%;padding:13px;border:0;border-radius:12px;background:#fff;color:#000;font-weight:900;cursor:pointer;margin-top:12px}<br>
+.float{position:fixed;z-index:9998;font-weight:900;font-size:22px;pointer-events:none;animation:up 0.9s ease forwards}<br>
+@keyframes up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-50px)}}<br>
+</style><br>
+</head><br>
+<body><br>
+<div class="wrap"><br>
+<div class="top">✓ V101 - CLIQUE GARANTIDO • JS: OK - PODE TOCAR</div></p>
 
-<div id="versao" style="background:#22C55E;color:#000;text-align:center;padding:6px;border-radius:8px;font-weight:900;font-size:12px">✅ V100 - CLIQUE GARANTIDO - SE VE V100, E O NOVO</div>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<div style="display:flex;align-items:center;gap:8px">
-<div style="width:32px;height:32px;border-radius:9px;background:#FF7A00;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900">⚔️</div>
-<div><div style="font-size:14px;font-weight:900">BATALHA DO <span style="color:#FF7A00">CRESCIMENTO</span></div><div style="font-size:9px;opacity:.6">LIVE - VERMELHO VS AZUL</div></div>
-</div>
-<div id="jsStatus" style="background: rgb(34, 197, 94); color: rgb(255, 255, 255); border-radius: 999px; padding: 4px 8px; font-size: 9px; font-weight: 900;">JS: OK - PODE TOCAR</div>
-</div>
+<div class="header"><h1>⚔️ BATALHA DO CRESCIMENTO</h1><p>LIVE - VERMELHO VS AZUL</p></div>
 
-<div style="background:#1E1E33;border:1px solid #333;border-radius:12px;padding:7px 10px;display:flex;justify-content:space-between;align-items:center">
-<div><div style="font-size:9px;opacity:.5">ROUND ATUAL</div><div id="roundTitle" style="font-size:12px;font-weight:900">ROUND 1 - COMENTARIO</div><div id="roundDesc" style="font-size:10px;opacity:.65">Cada comentario vale +1</div></div>
-<span style="background:#FF7A00;color:#fff;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900">USE +1</span>
-</div>
-<div style="height:4px;background:#333;border-radius:999px;overflow:hidden"><div id="progressBar" style="height:100%;width:50%;background:#FF7A00"></div></div>
+<div class="round-card"><div><b id="roundTitle">ROUND ATUAL: ROUND 1 - COMENTÁRIO</b><span id="roundDesc">Cada comentário vale +1</span></div><button type="button" class="use" id="useBtn">USE +1</button></div>
 
-<div style="background:#151528;border:1px solid #333;border-radius:14px;padding:8px 10px">
-<div style="display:flex;justify-content:space-between;align-items:center">
-<span style="font-size:9px;opacity:.55">TEMPO DA BATALHA</span>
-<span style="display:flex;gap:4px">
-<button type="button" data-action="min-3" onclick="setMin(3)" style="border-radius:999px;padding:5px 9px;background:#23233A;color:#ccc;font-weight:800;font-size:10px;border:1px solid #444;min-height:28px">3 MIN</button>
-<button type="button" data-action="min-5" onclick="setMin(5)" style="border-radius:999px;padding:5px 9px;background:#7C3AED;color:#fff;font-weight:800;font-size:10px;border:none;min-height:28px">5 MIN</button>
-<button type="button" data-action="min-10" onclick="setMin(10)" style="border-radius:999px;padding:5px 9px;background:#23233A;color:#ccc;font-weight:800;font-size:10px;border:1px solid #444;min-height:28px">10 MIN</button>
-</span></div>
-<div style="display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px">
-<div style="text-align:center;flex:1"><div style="color:#FF2D55;font-weight:900;font-size:10px">VERMELHO</div><div id="scoreRed" style="font-size:30px;font-weight:900;color:#FF2D55;line-height:1">0</div></div>
-<div style="text-align:center"><div id="time" style="font-size:30px;font-weight:900;line-height:1">05:00</div><div id="status" style="font-size:9px;opacity:.55;margin-top:2px">Pronto para comecar</div></div>
-<div style="text-align:center;flex:1"><div style="color:#2D9CFF;font-weight:900;font-size:10px">AZUL</div><div id="scoreBlue" style="font-size:30px;font-weight:900;color:#2D9CFF;line-height:1">0</div></div>
+<div class="card">
+<h3>TEMPO DA BATALHA</h3>
+<div class="timer">
+<div class="team"><small>VERMELHO</small><div class="red" id="scoreRed">0</div></div>
+<div class="center"><div class="time" id="timerText">05:00</div><small id="timerStatus">Pronto para começar</small></div>
+<div class="team"><small>AZUL</small><div class="blue" id="scoreBlue">0</div></div>
 </div>
-<div style="display:flex;gap:5px;margin-top:7px">
-<button type="button" id="btnStart" data-action="start" onclick="toggleTimer()" style="flex:1;border:none;border-radius:9px;padding:10px 2px;background:#FF7A00;color:#fff;font-weight:900;font-size:11px;min-height:44px">▶ INICIAR</button>
-<button type="button" data-action="addmin" onclick="addMin()" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px;min-height:44px">+ 1 MIN</button>
-<button type="button" data-action="zero" onclick="zeroTime()" style="flex:1;border:none;border-radius:9px;padding:10px 2px;background:#E8E8F0;color:#111;font-weight:900;font-size:11px;min-height:44px">ZERAR</button>
-<button type="button" data-action="reset" onclick="resetAll()" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px;min-height:44px">REINICIAR</button>
+<div class="durations">
+<button type="button" data-min="3">3 MIN</button>
+<button type="button" data-min="5" class="active">5 MIN</button>
+<button type="button" data-min="10">10 MIN</button>
 </div>
-<div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;margin-top:7px"><span id="pctRed" style="color:#FF2D55">50%</span><span style="opacity:.5;font-size:9px">BARRA DE GUERRA</span><span id="pctBlue" style="color:#2D9CFF">50%</span></div>
-<div style="display:flex;gap:8px;margin-top:6px;text-align:center">
-<div style="flex:1;background:#2A1A1A;border-radius:10px;padding:5px"><div id="faceRed" style="font-size:34px;line-height:1">😤</div><div style="height:6px;background:#222;border-radius:999px;margin:4px 6px 0;overflow:hidden"><div id="lifeRed" style="height:100%;width:100%;background:#22C55E"></div></div><div id="dmgRed" style="font-size:9px;margin-top:3px">Vida 100% - Limpo</div></div>
-<div style="align-self:center;font-size:16px">⚡</div>
-<div style="flex:1;background:#1A1A2A;border-radius:10px;padding:5px"><div id="faceBlue" style="font-size:34px;line-height:1">😤</div><div style="height:6px;background:#222;border-radius:999px;margin:4px 6px 0;overflow:hidden"><div id="lifeBlue" style="height:100%;width:100%;background:#22C55E"></div></div><div id="dmgBlue" style="font-size:9px;margin-top:3px">Vida 100% - Limpo</div></div>
+<div class="controls">
+<button type="button" class="btn-start" id="btnStart">▶ INICIAR</button>
+<button type="button" class="btn-min" id="btnPlus">+1 MIN</button>
+<button type="button" class="btn-zero" id="btnZero">ZERAR</button>
+<button type="button" class="btn-restart" id="btnRestart">REINICIAR</button>
 </div>
 </div>
 
-<div style="display:flex;gap:7px;flex:1">
-<div style="flex:1;background:#2A0A1A;border:1px solid #FF2D55;border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px">
-<div style="color:#FF8AA0;font-weight:900;font-size:10px">VERMELHO - TIME 1</div>
-<button type="button" data-action="add-red-1" onclick="addPonto('red',1)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#FF2D55;color:#fff;font-weight:900;font-size:12px;min-height:52px">💬 +1 COMENTARIO</button>
-<button type="button" data-action="add-red-5" onclick="addPonto('red',5)" style="flex:1;border:1px solid #FF2D55;border-radius:10px;padding:12px 4px;background:#3A1A1A;color:#fff;font-weight:900;font-size:12px;min-height:52px">🔗 +5 SEGUIR / COMP.</button>
-<button type="button" data-action="add-red-10" onclick="addPonto('red',10)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#fff;color:#FF2D55;font-weight:900;font-size:12px;min-height:52px">🎁 +10 PRESENTE</button>
-</div>
-<div style="flex:1;background:#0A1A2A;border:1px solid #2D9CFF;border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px">
-<div style="color:#8ACFFF;font-weight:900;font-size:10px">AZUL - TIME 2</div>
-<button type="button" data-action="add-blue-1" onclick="addPonto('blue',1)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#2D9CFF;color:#fff;font-weight:900;font-size:12px;min-height:52px">💬 +1 COMENTARIO</button>
-<button type="button" data-action="add-blue-5" onclick="addPonto('blue',5)" style="flex:1;border:1px solid #2D9CFF;border-radius:10px;padding:12px 4px;background:#1A2A3A;color:#fff;font-weight:900;font-size:12px;min-height:52px">🔗 +5 SEGUIR / COMP.</button>
-<button type="button" data-action="add-blue-10" onclick="addPonto('blue',10)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#fff;color:#2D9CFF;font-weight:900;font-size:12px;min-height:52px">🎁 +10 PRESENTE</button>
+<div class="card">
+<h3>BARRA DE GUERRA</h3>
+<div class="war-top"><span id="pctRed">50%</span><span>⚡</span><span id="pctBlue">50%</span></div>
+<div class="war"><div id="barRed" style="width:50%"></div><div id="barBlue" style="width:50%"></div></div>
+<div class="vidas">
+<div class="vida">😤<br><b id="vidaRed">Vida 100% • Limpo</b><br><span>VERMELHO</span></div>
+<div class="vida">😤<br><b id="vidaBlue">Vida 100% • Limpo</b><br><span>AZUL</span></div>
 </div>
 </div>
 
-<div style="background:#1A1A1A;border-radius:10px;padding:6px 9px;display:flex;justify-content:space-between;align-items:center">
-<span style="font-size:10px;font-weight:900">⚡ ULTIMOS PONTOS</span><span id="feedCount" style="font-size:10px;font-weight:900;color:#FFB020">NENHUM PONTO AINDA</span>
+<div class="teams">
+<div class="team-card red-card"><h4>VERMELHO - TIME 1</h4>
+<button type="button" class="b1" data-team="red" data-pts="1">+1 COMENTÁRIO</button>
+<button type="button" class="b5" data-team="red" data-pts="5">+5 SEGUIR / COMP.</button>
+<button type="button" class="b10" data-team="red" data-pts="10">🎁 +10 PRESENTE</button>
+</div>
+<div class="team-card blue-card"><h4>AZUL - TIME 2</h4>
+<button type="button" class="b1" data-team="blue" data-pts="1">+1 COMENTÁRIO</button>
+<button type="button" class="b5" data-team="blue" data-pts="5">+5 SEGUIR / COMP.</button>
+<button type="button" class="b10" data-team="blue" data-pts="10">🎁 +10 PRESENTE</button>
+</div>
 </div>
 
-<div id="tapTest" style="background:#111;border:1px dashed #555;border-radius:8px;padding:5px;text-align:center;font-size:10px;opacity:.8">TOQUES NA TELA: <span id="tapCount">0</span> - Se esse numero subir quando voce toca, o toque esta chegando</div><p id="feedText" style="font-size:10px;text-align:center;opacity:.6;margin:-2px 0 0">Toque em +1, +5 ou +10 conforme o chat participar.</p>
+<div class="card"><h3>⚡ ÚLTIMOS PONTOS</h3><div class="hist" id="history"></div></div>
 
-<div style="display:flex;gap:5px">
-<button type="button" id="r1" data-action="round-1" onclick="setRound(1)" style="flex:1;border:none;border-radius:9px;padding:10px;background:#fff;color:#111;font-weight:900;font-size:11px;min-height:44px">ROUND 1</button>
-<button type="button" id="r2" data-action="round-2" onclick="setRound(2)" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px;background:#23233A;color:#ccc;font-weight:900;font-size:11px;min-height:44px">ROUND 2</button>
-<button type="button" id="r3" data-action="round-3" onclick="setRound(3)" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px;background:#23233A;color:#ccc;font-weight:900;font-size:11px;min-height:44px">ROUND 3</button>
-<button type="button" data-action="next" onclick="nextRound()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#7C3AED;color:#fff;font-weight:900;font-size:11px;min-height:44px">➡️ PROXIMO</button>
+<div class="toques"><b>TOQUES NA TELA:</b> <b id="touchCount">0</b><br>Se esse número subir quando você toca, o toque está chegando. Toque em +1, +5 ou +10 conforme o chat participar.</div>
+
+<div class="rounds">
+<button type="button" data-round="1" class="active">ROUND 1</button>
+<button type="button" data-round="2">ROUND 2</button>
+<button type="button" data-round="3">ROUND 3</button>
+<button type="button" class="next" id="btnNext">➡ PRÓXIMO</button>
+</div>
+<button type="button" class="winner-btn" id="btnWinner">🏆 MOSTRAR VENCEDOR</button>
 </div>
 
-<p><button type="button" data-action="winner" onclick="showWinner()" style="width:100%;border:none;border-radius:10px;background:#FF7A00;color:#fff;padding:12px;font-weight:900;font-size:11px;min-height:48px">🏆 MOSTRAR VENCEDOR</button></p>
+<div class="overlay" id="overlay"><div class="overlay-box"><h2 id="winnerTitle">🏆 VENCEDOR</h2><p id="winnerText">Empate 0 x 0</p><button type="button" id="btnClose">FECHAR</button></div></div>
 
-<p></div><br>
-<div id="overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px;z-index:99"><br>
-<div style="background:#1A1A2E;border-radius:18px;padding:20px;text-align:center;width:100%;max-width:360px"><br>
-<p style="color:#FFB020;font-weight:900;font-size:10px;margin:0">FIM DA BATALHA</p><br>
-<h2 id="winTitle" style="font-size:28px;margin:10px 0">VERMELHO VENCEU!</h2><br>
-<div id="winScore" style="font-size:26px;font-weight:900;margin:8px 0">0 X 0</div><br>
-<div id="winDetail" style="font-size:12px;opacity:.7">Vermelho 50% - Azul 50%</div><br>
-<button type="button" data-action="newbattle" onclick="closeOverlay();resetAll()" style="margin-top:14px;border:none;border-radius:10px;padding:12px;background:#FF7A00;color:#fff;font-weight:900;width:100%;min-height:48px">🔁 NOVA BATALHA</button><br>
-<button type="button" data-action="close" onclick="closeOverlay()" style="margin-top:6px;border:1px solid #555;border-radius:10px;padding:10px;background:#23233A;color:#fff;font-weight:800;width:100%;min-height:48px">FECHAR</button><br>
-</div></div><br>
-<script><br>
-var red = 0;<br>
-var blue = 0;<br>
-var dmgRed = 0;<br>
-var dmgBlue = 0;<br>
-var round = 1;<br>
-var baseMin = 5;<br>
-var timeLeft = 300;<br>
-var timer = null;<br>
-var running = false;<br>
-var feedCount = 0;<br>
-function el(id){ return document.getElementById(id); }<br>
-function setText(id, txt){ var n = el(id); if(n){ n.textContent = txt; } }<br>
-function fmt(s){ var m = Math.floor(s/60); var sec = s % 60; var ms = m &lt; 10 ? &#39;0&#39;+m : &#39;&#39;+m; var ss = sec &lt; 10 ? &#39;0&#39;+sec : &#39;&#39;+sec; return ms + &#39;:&#39; + ss; }<br>
-function getFace(d){ if(d=<mark>0) return &#39;😤&#39;; if(d&lt;5) return &#39;😓&#39;; if(d&lt;10) return &#39;🤕&#39;; if(d&lt;15) return &#39;🥴&#39;; return &#39;😵&#39;; }<br>
-function getLabel(d){ if(d</mark>=0) return &#39;Limpo&#39;; if(d<5) return 'Leve'; if(d<10) return 'Medio'; if(d<15) return 'Pesado'; return 'CRITICO'; }<br>
-function update(){<br>
-  setText('scoreRed', red);<br>
-  setText('scoreBlue', blue);<br>
-  setText('time', fmt(timeLeft));<br>
-  var total = red + blue;<br>
-  if(total===0) total = 1;<br>
-  var pr = 50;<br>
-  if(red!==0 || blue!==0){ pr = Math.round(red/total*100); }<br>
-  var pb = 100 - pr;<br>
-  setText('pctRed', pr + '%');<br>
-  setText('pctBlue', pb + '%');<br>
-  var bar = el('progressBar'); if(bar){ bar.style.width = pr + '%'; }<br>
-  var lifeR = 100 - dmgRed*5; if(lifeR<0) lifeR=0;<br>
-  var lifeB = 100 - dmgBlue*5; if(lifeB<0) lifeB=0;<br>
-  setText('faceRed', getFace(dmgRed));<br>
-  setText('faceBlue', getFace(dmgBlue));<br>
-  var lR = el('lifeRed'); if(lR){ lR.style.width = lifeR + '%'; }<br>
-  var lB = el('lifeBlue'); if(lB){ lB.style.width = lifeB + '%'; }<br>
-  setText('dmgRed', 'Vida ' + lifeR + '% - ' + getLabel(dmgRed));<br>
-  setText('dmgBlue', 'Vida ' + lifeB + '% - ' + getLabel(dmgBlue));<br>
-  if(round===1){ setText('roundTitle','ROUND 1 - COMENTARIO'); setText('roundDesc','Cada comentario vale +1'); }<br>
-  if(round===2){ setText('roundTitle','ROUND 2 - SEGUIR / COMP.'); setText('roundDesc','Cada seguir ou compartilhar vale +5'); }<br>
-  if(round===3){ setText('roundTitle','ROUND 3 - PRESENTE'); setText('roundDesc','Cada presente vale +10. Reta final!'); }<br>
-  if(running){ setText('status','Batalha rolando...'); } else { if(timeLeft===baseMin*60){ setText('status','Pronto para comecar'); } else { setText('status','Pausado - ' + fmt(timeLeft)); } }<br>
-  if(running){ setText('btnStart','⏸ PAUSAR'); } else { setText('btnStart','▶ INICIAR'); }<br>
-  var ids = ['r1','r2','r3'];<br>
-  for(var i=0;i<3;i++){ var b = el(ids[i]); if(b){ if(i+1===round){ b.style.background='#fff'; b.style.color='#111'; } else { b.style.background='#23233A'; b.style.color='#ccc'; } } }<br>
-}<br>
-function addPonto(team, pts){<br>
-  var dmg = 1;<br>
-  if(pts===5) dmg = 3;<br>
-  if(pts===10) dmg = 5;<br>
-  if(team==='red'){ red = red + pts; dmgBlue = dmgBlue + dmg; } else { blue = blue + pts; dmgRed = dmgRed + dmg; }<br>
-  feedCount = feedCount + 1;<br>
-  setText('feedCount', feedCount + ' PONTOS');<br>
-  if(team==='red'){ setText('feedText','VERMELHO +' + pts + ' - Dano +' + dmg); } else { setText('feedText','AZUL +' + pts + ' - Dano +' + dmg); }<br>
-  update();<br>
-}<br>
-function setRound(n){ round = n; update(); }<br>
-function nextRound(){ if(round<3){ round = round + 1; } else { round = 1; } update(); }<br>
-function setMin(m){ baseMin = m; timeLeft = m*60; if(timer){ clearInterval(timer); } running = false; update(); }<br>
-function toggleTimer(){<br>
-  if(running){ if(timer){ clearInterval(timer); } running = false; }<br>
-  else {<br>
-    if(timeLeft<=0){ timeLeft = baseMin*60; }<br>
-    if(timer){ clearInterval(timer); }<br>
-    timer = setInterval(function(){ if(timeLeft>0){ timeLeft = timeLeft - 1; update(); if(timeLeft=<mark>0){ clearInterval(timer); running = false; update(); showWinner(); } } }, 1000);<br>
-    running = true;<br>
-  }<br>
-  update();<br>
-}<br>
-function addMin(){ timeLeft = timeLeft + 60; update(); }<br>
-function zeroTime(){ if(timer){ clearInterval(timer); } running = false; timeLeft = baseMin<em>60; update(); setText(&#39;feedText&#39;,&#39;Tempo zerado - Placar mantido&#39;); }<br>
-function resetAll(){ red=0; blue=0; dmgRed=0; dmgBlue=0; feedCount=0; round=1; timeLeft=baseMin</em>60; if(timer){ clearInterval(timer); } running=false; setText(&#39;feedCount&#39;,&#39;NENHUM PONTO AINDA&#39;); setText(&#39;feedText&#39;,&#39;Toque em +1, +5 ou +10 conforme o chat participar.&#39;); update(); }<br>
-function showWinner(){ var w = null; if(red&gt;blue) w=&#39;red&#39;; if(blue&gt;red) w=&#39;blue&#39;; if(w</mark>=null){ setText(&#39;winTitle&#39;,&#39;EMPATE!&#39;); } else { if(w=<mark>&#39;red&#39;){ setText(&#39;winTitle&#39;,&#39;VERMELHO VENCEU!&#39;); } else { setText(&#39;winTitle&#39;,&#39;AZUL VENCEU!&#39;); } } setText(&#39;winScore&#39;, red + &#39; X &#39; + blue); var tot = red+blue; if(tot</mark>=0) tot=1; setText(&#39;winDetail&#39;,&#39;Vermelho &#39; + Math.round(red/tot<em>100) + &#39;% - Azul &#39; + Math.round(blue/tot</em>100) + &#39;%&#39;); var o = el(&#39;overlay&#39;); if(o){ o.classList.add(&#39;aberto&#39;); } }<br>
-function closeOverlay(){ var o = el(&#39;overlay&#39;); if(o){ o.classList.remove(&#39;aberto&#39;); } }<br>
-var s = el(&#39;jsStatus&#39;);<br>
-if(s){ s.textContent = &#39;JS: OK - PODE TOCAR&#39;; s.style.background = &#39;#22C55E&#39;; }<br>
-var tapN = 0;<br>
-function handleAction(action){<br>
-  if(!action) return;<br>
-  if(action=<mark>&#39;min-3&#39;) setMin(3);<br>
-  else if(action</mark>=&#39;min-5&#39;) setMin(5);<br>
-  else if(action=<mark>&#39;min-10&#39;) setMin(10);<br>
-  else if(action</mark>=&#39;start&#39;) toggleTimer();<br>
-  else if(action=<mark>&#39;addmin&#39;) addMin();<br>
-  else if(action</mark>=&#39;zero&#39;) zeroTime();<br>
-  else if(action=<mark>&#39;reset&#39;) resetAll();<br>
-  else if(action</mark>=&#39;add-red-1&#39;) addPonto(&#39;red&#39;,1);<br>
-  else if(action=<mark>&#39;add-red-5&#39;) addPonto(&#39;red&#39;,5);<br>
-  else if(action</mark>=&#39;add-red-10&#39;) addPonto(&#39;red&#39;,10);<br>
-  else if(action=<mark>&#39;add-blue-1&#39;) addPonto(&#39;blue&#39;,1);<br>
-  else if(action</mark>=&#39;add-blue-5&#39;) addPonto(&#39;blue&#39;,5);<br>
-  else if(action=<mark>&#39;add-blue-10&#39;) addPonto(&#39;blue&#39;,10);<br>
-  else if(action</mark>=&#39;round-1&#39;) setRound(1);<br>
-  else if(action=<mark>&#39;round-2&#39;) setRound(2);<br>
-  else if(action</mark>=&#39;round-3&#39;) setRound(3);<br>
-  else if(action=<mark>&#39;next&#39;) nextRound();<br>
-  else if(action</mark>=&#39;winner&#39;) showWinner();<br>
-  else if(action=<mark>&#39;newbattle&#39;){ closeOverlay(); resetAll(); }<br>
-  else if(action</mark>=&#39;close&#39;) closeOverlay();<br>
-}<br>
-function onTap(e){<br>
-  tapN = tapN + 1;<br>
-  var tc = el(&#39;tapCount&#39;); if(tc){ tc.textContent = tapN; }<br>
-  var t = e.target;<br>
-  while(t &amp;&amp; t.tagName !== &#39;BUTTON&#39; &amp;&amp; t !== document.body){ t = t.parentNode; }<br>
-  if(t &amp;&amp; t.tagName === &#39;BUTTON&#39;){<br>
-    var a = t.getAttribute(&#39;data-action&#39;);<br>
-    if(a){<br>
-      // Se ja foi pelo onclick, o segundo clique seria duplicado, entao so deixa o delegation agir se o onclick nao rodou<br>
-      // Para evitar duplicar, a gente marca que ja tratou neste toque<br>
-      if(t.<u>jaTratado) { t.</u>jaTratado = false; return; }<br>
-      // Deixa o onclick normal rodar primeiro, e o delegation so entra se o onclick falhar - por isso esperamos 0ms<br>
-      // Na pratica, como o onclick ja roda, a gente nao precisa duplicar aqui, so garante que se onclick falhar, delegation salva<br>
-      // Para nao duplicar, nao chama handleAction aqui se onclick existe - o delegation fica como backup via touchstart<br>
-    }<br>
-  }<br>
-}<br>
-document.addEventListener(&#39;click&#39;, function(e){<br>
-  var t = e.target;<br>
-  while(t &amp;&amp; t.tagName !== &#39;BUTTON&#39; &amp;&amp; t !== document.body){ t = t.parentNode; }<br>
-  if(t &amp;&amp; t.tagName === &#39;BUTTON&#39;){<br>
-    var a = t.getAttribute(&#39;data-action&#39;);<br>
-    // Se o onclick ja executou, ele ja mudou o placar, entao o delegation nao precisa repetir<br>
-    // Mas se o onclick foi bloqueado pelo iPhone, o delegation salva - detectamos se o placar nao mudou em 50ms? Simplificado: deixa o onclick ser o principal, delegation e backup para touch<br>
-  }<br>
-});<br>
-document.addEventListener(&#39;touchstart&#39;, function(e){<br>
-  tapN = tapN + 1;<br>
-  var tc = el(&#39;tapCount&#39;); if(tc){ tc.textContent = tapN; }<br>
-  var t = e.target;<br>
-  while(t &amp;&amp; t.tagName !== &#39;BUTTON&#39; &amp;&amp; t !== document.body){ t = t.parentNode; }<br>
-  if(t &amp;&amp; t.tagName === &#39;BUTTON&#39;){<br>
-    var a = t.getAttribute(&#39;data-action&#39;);<br>
-    if(a){<br>
-      // No iPhone, touchstart e mais confiavel que click - executa aqui e marca para o click nao duplicar<br>
-      t.<u>jaTratado = true;<br>
-      handleAction(a);<br>
-      setTimeout(function(){ if(t) t.</u>jaTratado = false; }, 400);<br>
-    }<br>
-  }<br>
-}, {passive:true});<br>
-update();<br>
-</script><br>
-<script>(function(){var loc=location.href.replace(/#.<em>\(/,&quot;&quot;);var ATTR_NAMES=[&quot;data-product-id&quot;,&quot;data-productid&quot;,&quot;data-product_id&quot;,&quot;product-id&quot;,&quot;productid&quot;,&quot;product_id&quot;,&quot;data-source-entity-id&quot;,&quot;source-entity-id&quot;,&quot;source_entity_id&quot;,&quot;data-product&quot;,&quot;data-metadata&quot;,&quot;data-meta&quot;];var DATASET_KEYS=[&quot;productId&quot;,&quot;productid&quot;,&quot;product_id&quot;,&quot;sourceEntityId&quot;,&quot;sourceentityid&quot;,&quot;source_entity_id&quot;,&quot;product&quot;,&quot;metadata&quot;,&quot;meta&quot;];function readProductId(value){if(typeof value!==&quot;string&quot;||value.length===0)return null;if(/^[0-9]{6,}\)/.test(value))return value;var match=value.match(/(?:product(?:<u>|-)?id|source(?:</u>|-)?entity(?:<u>|-)?id)[&quot;&#39;=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&amp;&amp;node!==document.body;node=node.parentElement){for(var i=0;i&lt;ATTR</u>NAMES.length;i++){var attrValue=node.getAttribute&amp;&amp;node.getAttribute(ATTR<u>NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j&lt;DATASET</u>KEYS.length;j++){var dataValue=dataset[DATASET<u>KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&amp;&amp;node.getAttribute&amp;&amp;node.getAttribute(<q>data-clippy-inline-media-slot</q>)!<mark>null)}function findInlineMediaSlot(start){for(var node=start;node&amp;&amp;node!</mark>document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&amp;&amp;((node.getAttribute(<q>data-clippy-inline-media-url</q>)||node.getAttribute(<q>data-url</q>)||node.getAttribute(&quot;data</u>url&quot;)))||node.href||null}function stripHash(url){return String(url).replace(/#.</em>\(/,&quot;&quot;)}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!==&quot;https:&quot;)return false;var host=url.hostname.toLowerCase();var supported=host===&quot;instagram.com&quot;||host.endsWith(&quot;.instagram.com&quot;)||host===&quot;facebook.com&quot;||host.endsWith(&quot;.facebook.com&quot;);return supported&amp;&amp;/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&amp;&amp;node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute(&quot;data-href&quot;)||node.getAttribute(&quot;data-url&quot;);if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&amp;&amp;typeof url===&quot;string&quot;&amp;&amp;/^https?:\/\//.test(url)){parent.postMessage({type:&quot;ecto:usercontent-link-click&quot;,href:url},&quot;*&quot;);return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener(&quot;click&quot;,function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest(&quot;a[href]&quot;):null;if(a&amp;&amp;a.href&amp;&amp;/^https?:\/\//.test(a.href)&amp;&amp;a.href.replace(/#.*\)/,<q>)!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:<q>ecto-artifact-link-click</q>,productId:productId},<q>*</q>);return}e.preventDefault();parent.postMessage({type:<q>ecto:usercontent-link-click</q>,href:a.href},<q>*</q>);return}var dataHref=findDataHref(target);if(dataHref&amp;&amp;/<sup>https?:\/\//.test(dataHref.href)&amp;&amp;dataHref.href.replace(/#.*$/,</sup></q>)!<mark>loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:<q>ecto:usercontent-link-click</q>,href:dataHref.href},<q>*</q>)}},true)})();</script><script>(function(){var FOCUS<u>TYPE=<q>ecto:artifact-focus-request</q>;var CLOSE</u>TYPE=<q>ecto:artifact-close-request</q>;function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute(<q>tabindex</q>))body.setAttribute(<q>tabindex</q>,<q>-1</q>);try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener(<q>message</q>,function(event){if(event.source!</mark>window.parent)return;var data=event.data;if(!data||typeof data!<mark><q>object</q>||data.type!</mark>FOCUS<u>TYPE)return;if(document.readyState=<mark><q>loading</q>){document.addEventListener(<q>DOMContentLoaded</q>,focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener(<q>keydown</q>,function(event){if(event.key!</mark><q>Escape</q>)return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE</u>TYPE},<q>*</q>);},0);});})();</script></p>
+<script>
+var red = 0, blue = 0, round = 1, totalSeconds = 300, left = 300, timerId = null, running = false, touches = 0;
+var history = [];
+var roundInfo = {1:{title:'ROUND 1 - COMENTÁRIO',desc:'Cada comentário vale +1',pts:1},2:{title:'ROUND 2 - SEGUIR / COMP.',desc:'Cada seguir vale +5',pts:5},3:{title:'ROUND 3 - PRESENTE',desc:'Cada presente vale +10',pts:10}};
+
+function fmt(s){var m=Math.floor(s/60),ss=s%60;return (m<10?'0'+m:m)+':'+(ss<10?'0'+ss:ss);}
+function vidaLabel(v){if(v>=80) return 'Vida '+v+'% • Limpo'; if(v>=50) return 'Vida '+v+'% • Ferido'; if(v>0) return 'Vida '+v+'% • Crítico'; return 'Vida 0% • Eliminado';}
+function render(){
+document.getElementById('scoreRed').textContent=red;
+document.getElementById('scoreBlue').textContent=blue;
+document.getElementById('timerText').textContent=fmt(left);
+var total=red+blue; var pRed=total===0?50:Math.round(red/total*100); var pBlue=100-pRed;
+document.getElementById('pctRed').textContent=pRed+'%';
+document.getElementById('pctBlue').textContent=pBlue+'%';
+document.getElementById('barRed').style.width=pRed+'%';
+document.getElementById('barBlue').style.width=pBlue+'%';
+var vRed=Math.max(0,100-blue); var vBlue=Math.max(0,100-red);
+document.getElementById('vidaRed').textContent=vidaLabel(vRed);
+document.getElementById('vidaBlue').textContent=vidaLabel(vBlue);
+document.getElementById('touchCount').textContent=touches;
+document.getElementById('roundTitle').textContent='ROUND ATUAL: '+roundInfo[round].title;
+document.getElementById('roundDesc').textContent=roundInfo[round].desc;
+document.getElementById('useBtn').textContent='USE +'+roundInfo[round].pts;
+var h=document.getElementById('history');
+if(history.length===0){h.textContent='NENHUM PONTO AINDA';}else{h.innerHTML='';history.slice().reverse().slice(0,5).forEach(function(it){var d=document.createElement('div');d.className='hist-item';d.textContent=it;h.appendChild(d);});}
+document.querySelectorAll('[data-round]').forEach(function(b){b.classList.toggle('active', parseInt(b.getAttribute('data-round'))===round);});
+try{localStorage.setItem('batalha_v101', JSON.stringify({red:red,blue:blue,round:round,left:left,totalSeconds:totalSeconds,history:history}));}catch(e){}
+}
+function floatText(txt, color, x, y){var el=document.createElement('div');el.className='float';el.textContent=txt;el.style.color=color;el.style.left=x+'px';el.style.top=y+'px';document.body.appendChild(el);setTimeout(function(){el.remove();},900);}
+function addPoints(team, pts, ev){
+touches++;
+if(team==='red'){red+=pts;}else{blue+=pts;}
+var label=team==='red'?'VERMELHO +'+pts:'AZUL +'+pts;
+var tipo=pts===1?'Comentário':pts===5?'Seguir / Comp.':'Presente';
+history.push(label+' • '+tipo);
+if(ev){floatText('+'+pts, team==='red'?'#ff6b6b':'#60a5fa', ev.clientX-10, ev.clientY-10);}
+if(navigator.vibrate){try{navigator.vibrate(10);}catch(e){}}
+render();
+}
+document.querySelectorAll('[data-team]').forEach(function(btn){
+btn.addEventListener('click', function(e){addPoints(btn.getAttribute('data-team'), parseInt(btn.getAttribute('data-pts')), e);});
+});
+document.querySelectorAll('[data-round]').forEach(function(btn){
+btn.addEventListener('click', function(){touches++; round=parseInt(btn.getAttribute('data-round')); render();});
+});
+document.querySelectorAll('[data-min]').forEach(function(btn){
+btn.addEventListener('click', function(){touches++; totalSeconds=parseInt(btn.getAttribute('data-min'))*60; if(!running){left=totalSeconds;} document.querySelectorAll('[data-min]').forEach(function(b){b.classList.remove('active');}); btn.classList.add('active'); render();});
+});
+document.getElementById('useBtn').addEventListener('click', function(e){touches++; render();});
+document.getElementById('btnNext').addEventListener('click', function(){touches++; round=round>=3?1:round+1; render();});
+document.getElementById('btnPlus').addEventListener('click', function(){touches++; left+=60; totalSeconds+=60; document.getElementById('timerStatus').textContent='+1 minuto adicionado'; render();});
+document.getElementById('btnZero').addEventListener('click', function(){touches++; red=0; blue=0; history=[]; left=totalSeconds; clearInterval(timerId); timerId=null; running=false; document.getElementById('btnStart').textContent='▶ INICIAR'; document.getElementById('timerStatus').textContent='Pronto para começar'; render();});
+document.getElementById('btnRestart').addEventListener('click', function(){touches++; red=0; blue=0; history=[]; round=1; left=totalSeconds; clearInterval(timerId); timerId=null; running=false; document.getElementById('btnStart').textContent='▶ INICIAR'; document.getElementById('timerStatus').textContent='Pronto para começar'; render();});
+document.getElementById('btnStart').addEventListener('click', function(){
+touches++;
+if(running){clearInterval(timerId); timerId=null; running=false; this.textContent='▶ INICIAR'; document.getElementById('timerStatus').textContent='Pausado';}
+else{running=true; this.textContent='⏸ PAUSAR'; document.getElementById('timerStatus').textContent='Batalha rolando...'; timerId=setInterval(function(){if(left>0){left--; render(); if(left===0){clearInterval(timerId); running=false; document.getElementById('btnStart').textContent='▶ INICIAR'; document.getElementById('timerStatus').textContent='Tempo esgotado!'; showWinner();}}},1000);}
+render();
+});
+function showWinner(){
+var t=document.getElementById('winnerTitle'); var p=document.getElementById('winnerText');
+if(red>blue){t.textContent='🏆 VERMELHO VENCEU!'; p.textContent='Placar final: Vermelho '+red+' x '+blue+' Azul';}
+else if(blue>red){t.textContent='🏆 AZUL VENCEU!'; p.textContent='Placar final: Vermelho '+red+' x '+blue+' Azul';}
+else{t.textContent='🤝 EMPATE!'; p.textContent='Placar final: '+red+' x '+blue;}
+document.getElementById('overlay').classList.add('show');
+}
+document.getElementById('btnWinner').addEventListener('click', function(){touches++; render(); showWinner();});
+document.getElementById('btnClose').addEventListener('click', function(){document.getElementById('overlay').classList.remove('show');});
+document.getElementById('overlay').addEventListener('click', function(e){if(e.target===this){this.classList.remove('show');}});
+try{var saved=JSON.parse(localStorage.getItem('batalha_v101')||'null'); if(saved){red=saved.red||0; blue=saved.blue||0; round=saved.round||1; left=saved.left||saved.totalSeconds||300; totalSeconds=saved.totalSeconds||300; history=saved.history||[];}}catch(e){}
+render();
+console.log('BATALHA V101 OK - JS carregou');
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script>
 
 <p></body></html></p>
 <script>window.webkit.messageHandlers.TextLoaded.postMessage('TextLoaded')</script></body></html>
