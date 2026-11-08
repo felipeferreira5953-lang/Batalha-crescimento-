@@ -1,0 +1,272 @@
+<!DOCTYPE html><html style='font-size:17px'><head>  <meta charset=UTF-8>  <meta name='viewport' content='width=100%, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>  <title>index</title>  
+<link rel="stylesheet" href="/var/mobile/Containers/Data/Application/EDDFA3E9-5161-4093-ABEE-9FD64F0F6E34/Library/Application Support/MarkDownResources/Styles/GitHub.css"/>
+<link rel="stylesheet" href="/var/mobile/Containers/Data/Application/EDDFA3E9-5161-4093-ABEE-9FD64F0F6E34/Library/Application Support/MarkDownResources/Highlight/highlight-style/tomorrow.css"/>  
+<script src="/var/mobile/Containers/Data/Application/EDDFA3E9-5161-4093-ABEE-9FD64F0F6E34/Library/Application Support/MarkDownResources/Highlight/highlightjs/highlight.min.js"></script>
+<script src="/var/mobile/Containers/Data/Application/EDDFA3E9-5161-4093-ABEE-9FD64F0F6E34/Library/Application Support/MarkDownResources/Highlight/highlightjs/swift.min.js"></script>
+<script src="/var/mobile/Containers/Data/Application/EDDFA3E9-5161-4093-ABEE-9FD64F0F6E34/Library/Application Support/MarkDownResources/MathJax/tex-mml-chtml.js"></script>  <script>hljs.initHighlightingOnLoad();</script>  <script type='text/x-mathjax-config'>MathJax.Hub.Config({'showProcessingMessages': false, 'messageStyle': 'none'});</script></head><body>  <p><html lang="pt-BR"><head><style><br>
+@font-face {<br>
+  font-family: <q>Optimistic</q>;<br>
+  font-style: normal;<br>
+  font-weight: 400 600;<br>
+  font-display: swap;<br>
+  src: url(<q>/fonts/OptimisticAI<u>VF</u>Optimized.woff2</q>) format(<q>woff2</q>);<br>
+}<br>
+@font-face {<br>
+  font-family: <q>Optimistic Mono</q>;<br>
+  font-style: normal;<br>
+  font-weight: 400;<br>
+  font-display: swap;<br>
+  src: url(<q>/fonts/OptimisticMono<u>W</u>TextRegular.woff2</q>) format(<q>woff2</q>);<br>
+}<br>
+:where(html) {<br>
+  font-family: <q>Optimistic</q>, system-ui, sans-serif;<br>
+}<br>
+:where(code, pre, kbd, samp) {<br>
+  font-family: <q>Optimistic Mono</q>, ui-monospace, monospace;<br>
+}<br>
+</style><br>
+<meta charset="UTF-8"><br>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><br>
+<meta name="theme-color" content="#0F0F1A"><br>
+<meta name="mobile-web-app-capable" content="yes"><br>
+<meta name="apple-mobile-web-app-capable" content="yes"><br>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><br>
+<meta name="apple-mobile-web-app-title" content="Batalha do Crescimento"><br>
+<title>Batalha do Crescimento</title><br>
+<style><br>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}<br>
+html,body{height:100%;background:#0F0F1A;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}<br>
+body{display:flex;justify-content:center}<br>
+.app{width:100%;max-width:480px;height:100dvh;display:flex;flex-direction:column;padding:8px 10px 8px;overflow:hidden;background:linear-gradient(180deg,#1a1033,#0F0F1A)}<br>
+h1{font-size:22px;line-height:1;text-align:center;letter-spacing:.5px;font-weight:900}<br>
+h1 span{color:#FF7A00}<br>
+h1 .az{color:#B04DFF}<br>
+.top{background:#2A1A4A;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:7px 9px;margin-top:7px}<br>
+.top-row{display:flex;justify-content:space-between;align-items:center;gap:6px}<br>
+.badge{font-size:10px;letter-spacing:1px;opacity:.7;font-weight:700}<br>
+.round-title{font-size:14px;font-weight:900}<br>
+.pill{background:#FF7A00;color:#fff;border:none;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;white-space:nowrap}<br>
+.desc{font-size:11px;opacity:.8;margin-top:3px}<br>
+.bar{height:5px;background:rgba(255,255,255,.15);border-radius:999px;margin-top:6px;overflow:hidden}<br>
+.bar i{display:block;height:100%;width:50%;background:#FF7A00;border-radius:999px}<br>
+.timer-card{background:#151528;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:8px 9px;margin-top:7px}<br>
+.timer-head{display:flex;justify-content:space-between;align-items:center}<br>
+.timer-head small{font-size:10px;letter-spacing:1px;opacity:.6;font-weight:800}<br>
+.mins{display:flex;gap:4px}<br>
+.mins button{border:none;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800;background:#2A2A44;color:#ccc}<br>
+.mins button.active{background:#7C3AED;color:#fff}<br>
+.time{font-size:38px;font-weight:900;text-align:center;line-height:1;margin-top:2px;font-variant-numeric:tabular-nums}<br>
+.status{font-size:11px;text-align:center;opacity:.6;margin-top:1px}<br>
+.controls{display:flex;gap:5px;margin-top:7px}<br>
+.controls button{flex:1;border:none;border-radius:9px;padding:9px 2px;font-size:11px;font-weight:900;cursor:pointer}<br>
+.btn-start{background:#FF7A00;color:#fff}<br>
+.btn-gray{background:#2A2A44;color:#fff}<br>
+.btn-light{background:#D8D8E6;color:#111}<br>
+.score-row{display:flex;justify-content:space-between;align-items:center;margin-top:9px;text-align:center}<br>
+.score-row b{font-size:11px;letter-spacing:.5px}<br>
+.score-row .red{color:#FF2D55}<br>
+.score-row .blue{color:#2D9CFF}<br>
+.score-num{font-size:34px;font-weight:900;line-height:1}<br>
+.score-num.red{color:#FF2D55}<br>
+.score-num.blue{color:#2D9CFF}<br>
+.war{display:flex;justify-content:space-between;font-size:11px;font-weight:800;margin-top:4px}<br>
+.war b{color:#fff;opacity:.6}<br>
+.fighters{display:flex;justify-content:center;gap:10px;margin-top:6px;position:relative}<br>
+.fighter{flex:1;text-align:center;background:rgba(255,255,255,.05);border-radius:12px;padding:6px 4px 7px;position:relative;transition:transform .2s}<br>
+.fighter.hit{animation:shake .35s}<br>
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px) rotate(-2deg)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}<br>
+.face{font-size:52px;line-height:1;position:relative}<br>
+.face small{position:absolute;top:-4px;right:6px;font-size:18px;display:none}<br>
+.fighter.d1 .face small,.fighter.d2 .face small,.fighter.d3 .face small,.fighter.d4 .face small{display:block}<br>
+.life{height:6px;background:#222;border-radius:999px;margin:6px 6px 0;overflow:hidden}<br>
+.life i{display:block;height:100%;background:#22C55E;transition:width .3s,background .3s}<br>
+.dmg-label{font-size:10px;margin-top:3px;opacity:.85;font-weight:700}<br>
+.dmg-label b{color:#FFB020}<br>
+.fighters .vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#FFD700;color:#111;font-weight:900;font-size:14px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2}<br>
+.buttons{display:flex;gap:7px;margin-top:8px}<br>
+.col{flex:1;display:flex;flex-direction:column;gap:5px}<br>
+.col.red-col{background:rgba(255,45,85,.08);border:1px solid rgba(255,45,85,.3);border-radius:12px;padding:6px}<br>
+.col.blue-col{background:rgba(45,156,255,.08);border:1px solid rgba(45,156,255,.3);border-radius:12px;padding:6px}<br>
+.col b{font-size:11px}<br>
+.col.red-col b{color:#FF7A9A}<br>
+.col.blue-col b{color:#7AC0FF}<br>
+.col button{border:none;border-radius:10px;padding:9px 4px;color:#fff;font-weight:900;font-size:13px;cursor:pointer}<br>
+.col.red-col button{background:#FF2D55}<br>
+.col.blue-col button{background:#2D9CFF}<br>
+.col button:active{transform:scale(.97)}<br>
+.feed{background:rgba(255,255,255,.06);border-radius:10px;padding:6px 8px;margin-top:7px;min-height:38px}<br>
+.feed-title{font-size:11px;font-weight:900;display:flex;justify-content:space-between}<br>
+.feed-title span:last-child{opacity:.5;font-weight:700}<br>
+.feed-text{font-size:11px;opacity:.75;text-align:center;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}<br>
+.rounds{display:flex;gap:5px;margin-top:7px}<br>
+.rounds button{flex:1;border:none;border-radius:9px;padding:9px 2px;font-size:11px;font-weight:900;background:#2A2A44;color:#ccc;cursor:pointer}<br>
+.rounds button.active{background:#fff;color:#111}<br>
+.rounds button.next{background:#7C3AED;color:#fff}<br>
+.winner-btn{margin-top:6px;width:100%;border:none;border-radius:11px;background:#FF7A00;color:#fff;padding:11px;font-weight:900;font-size:13px;cursor:pointer}<br>
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:10;padding:16px}<br>
+.overlay.show{display:flex}<br>
+.card{background:#1E1E33;border-radius:16px;padding:18px;text-align:center;width:100%;max-width:380px}<br>
+.card h2{font-size:32px;line-height:1}<br>
+.card .score{font-size:32px;font-weight:900;margin:10px 0 4px}<br>
+.card p{opacity:.7;font-size:13px}<br>
+.card button{width:100%;border:none;border-radius:11px;padding:12px;margin-top:10px;font-weight:900;cursor:pointer}<br>
+.card .white{background:#fff;color:#111}<br>
+.card .ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}<br>
+</style><br>
+</head><br>
+<body><br>
+<div class="app"><br>
+<h1>BATALHA DO <span>CRESCIMENTO</span></h1><br>
+<div class="top"><br>
+<div class="top-row"><span class="badge">ROUND ATUAL</span><span class="round-title" id="roundTitle">ROUND 1 — COMENTÁRIO</span><button class="pill" id="roundPill">Use +1</button></div><br>
+<p class="desc" id="roundDesc">Cada comentário no chat vale +1. Marque na hora para o time subir.</p><br>
+<div class="bar"><i id="progressBar" style="width: 50%;"></i></div><br>
+</div></p>
+
+<div class="timer-card">
+<div class="timer-head"><small>TEMPO DA BATALHA</small><div class="mins"><button data-min="3">3 MIN</button><button data-min="5" class="active">5 MIN</button><button data-min="10">10 MIN</button></div></div>
+<div class="time" id="time">05:00</div>
+<div class="status" id="status">Pronto para começar</div>
+<div class="controls">
+<button class="btn-start" id="btnStart">▶ INICIAR</button>
+<button class="btn-gray" id="btnPlus">+ 1 MIN</button>
+<button class="btn-light" id="btnZero">↺ ZERAR TEMPO</button>
+<button class="btn-gray" id="btnReset">↺ REINICIAR</button>
+</div>
+<div class="score-row">
+<div><b class="red">VERMELHO</b><div class="score-num red" id="scoreRed">0</div></div>
+<div><b style="opacity:.5">X</b><div style="font-size:10px;opacity:.5;margin-top:2px">PLACAR</div></div>
+<div><b class="blue">AZUL</b><div class="score-num blue" id="scoreBlue">0</div></div>
+</div>
+<div class="war"><span id="pctRed" style="color:#FF2D55">50%</span><b>BARRA DE GUERRA</b><span id="pctBlue" style="color:#2D9CFF">50%</span></div>
+<div class="fighters">
+<div class="fighter " id="fighterRed"><div class="face" id="faceRed">😤<small>🩹</small></div><div class="life"><i id="lifeRed" style="width: 100%; background: rgb(34, 197, 94);"></i></div><div class="dmg-label" id="dmgRed">Vida 100% • Limpo</div></div>
+<div class="vs">⚡</div>
+<div class="fighter " id="fighterBlue"><div class="face" id="faceBlue">😤<small>🩹</small></div><div class="life"><i id="lifeBlue" style="width: 100%; background: rgb(34, 197, 94);"></i></div><div class="dmg-label" id="dmgBlue">Vida 100% • Limpo</div></div>
+</div>
+</div>
+
+<div class="buttons">
+<div class="col red-col"><b>VERMELHO</b>
+<button onclick="add('red',1,'+1 COMENTÁRIO')">💬 +1 COMENTÁRIO</button>
+<button onclick="add('red',5,'+5 SEGUIR / COMPART.')">🔗 +5 SEGUIR / COMPART.</button>
+<button onclick="add('red',10,'+10 PRESENTE')">🎁 +10 PRESENTE</button>
+</div>
+<div class="col blue-col"><b>AZUL</b>
+<button onclick="add('blue',1,'+1 COMENTÁRIO')">💬 +1 COMENTÁRIO</button>
+<button onclick="add('blue',5,'+5 SEGUIR / COMPART.')">🔗 +5 SEGUIR / COMPART.</button>
+<button onclick="add('blue',10,'+10 PRESENTE')">🎁 +10 PRESENTE</button>
+</div>
+</div>
+
+<div class="feed"><div class="feed-title"><span>⚡ ÚLTIMOS PONTOS</span><span id="feedCount">NENHUM PONTO AINDA</span></div><div class="feed-text" id="feedText">Toque em +1, +5 ou +10 conforme o chat participar.</div></div>
+
+<div class="rounds">
+<button data-round="1" class="active">ROUND 1</button>
+<button data-round="2">ROUND 2</button>
+<button data-round="3">ROUND 3</button>
+<button class="next" id="btnNext">PRÓXIMO →</button>
+</div>
+<button class="winner-btn" id="btnWinner">🏆 MOSTRAR VENCEDOR</button>
+</div>
+
+<div class="overlay" id="overlay">
+<div class="card">
+<p style="color:#FFB020;font-weight:900;letter-spacing:2px;font-size:11px">FIM DA BATALHA</p>
+<h2 id="winTitle">VERMELHO<br>VENCEU!</h2>
+<div class="score" id="winScore">0 X 0</div>
+<p id="winDetail"></p>
+<button class="white" onclick="closeOverlay();resetAll()">NOVA BATALHA</button>
+<button class="ghost" onclick="closeOverlay()">VER PLACAR FINAL</button>
+</div>
+</div>
+
+<script>
+let red=0, blue=0, dmgRed=0, dmgBlue=0, round=1, baseMin=5, timeLeft=300, timer=null, running=false, feedCount=0;
+const roundsInfo=[
+{title:'ROUND 1 — COMENTÁRIO',desc:'Cada comentário no chat vale +1. Marque na hora para o time subir.',pill:'Use +1'},
+{title:'ROUND 2 — SEGUIR / COMPART.',desc:'Cada seguir ou compartilhar vale +5. Hora de crescer o time!',pill:'Use +5'},
+{title:'ROUND 3 — PRESENTE',desc:'Cada presente vale +10. Reta final, vale tudo!',pill:'Use +10'},
+];
+function fmt(s){let m=Math.floor(s/60), sec=s%60; return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0')}
+function faceFor(d){
+if(d===0) return '😤';
+if(d<5) return '😓';
+if(d<10) return '🤕';
+if(d<15) return '🥴';
+return '😵‍💫';
+}
+function labelFor(d){
+if(d===0) return 'Limpo';
+if(d<5) return 'Leve • Olho roxo';
+if(d<10) return 'Médio • Curativo';
+if(d<15) return 'Pesado • Cambaleando';
+return 'CRÍTICO • Detonado';
+}
+function update(){
+document.getElementById('scoreRed').textContent=red;
+document.getElementById('scoreBlue').textContent=blue;
+document.getElementById('time').textContent=fmt(timeLeft);
+let total=red+blue||1;
+let pr=Math.round(red/total*100); if(red===0&&blue===0) pr=50;
+let pb=100-pr;
+document.getElementById('pctRed').textContent=pr+'%';
+document.getElementById('pctBlue').textContent=pb+'%';
+document.getElementById('progressBar').style.width=pr+'%';
+// fighters
+let lifeR=Math.max(0,100-dmgRed*5), lifeB=Math.max(0,100-dmgBlue*5);
+document.getElementById('faceRed').firstChild.textContent=faceFor(dmgRed);
+document.getElementById('faceBlue').firstChild.textContent=faceFor(dmgBlue);
+let fR=document.getElementById('fighterRed'), fB=document.getElementById('fighterBlue');
+fR.className='fighter '+(dmgRed===0?'':dmgRed<5?'d1':dmgRed<10?'d2':dmgRed<15?'d3':'d4');
+fB.className='fighter '+(dmgBlue===0?'':dmgBlue<5?'d1':dmgBlue<10?'d2':dmgBlue<15?'d3':'d4');
+let lR=document.getElementById('lifeRed'), lB=document.getElementById('lifeBlue');
+lR.style.width=lifeR+'%'; lB.style.width=lifeB+'%';
+lR.style.background=lifeR>60?'#22C55E':lifeR>30?'#FACC15':'#EF4444';
+lB.style.background=lifeB>60?'#22C55E':lifeB>30?'#FACC15':'#EF4444';
+document.getElementById('dmgRed').innerHTML='Vida '+lifeR+'% • '+labelFor(dmgRed);
+document.getElementById('dmgBlue').innerHTML='Vida '+lifeB+'% • '+labelFor(dmgBlue);
+// round
+let info=roundsInfo[round-1];
+document.getElementById('roundTitle').textContent=info.title;
+document.getElementById('roundDesc').textContent=info.desc;
+document.getElementById('roundPill').textContent=info.pill;
+document.querySelectorAll('.rounds button[data-round]').forEach(b=>{b.classList.toggle('active', Number(b.dataset.round)===round)});
+document.getElementById('status').textContent=running?'Batalha rolando...':(timeLeft===baseMin*60?'Pronto para começar':'Pausado • '+fmt(timeLeft));
+document.getElementById('btnStart').textContent=running?'⏸ PAUSAR':'▶ INICIAR';
+}
+function add(team, pts, label){
+let dmg = pts===1?1: pts===5?3:5;
+if(team==='red'){ red+=pts; dmgBlue+=dmg; document.getElementById('fighterBlue').classList.add('hit'); setTimeout(()=>document.getElementById('fighterBlue').classList.remove('hit'),400);}
+else{ blue+=pts; dmgRed+=dmg; document.getElementById('fighterRed').classList.add('hit'); setTimeout(()=>document.getElementById('fighterRed').classList.remove('hit'),400);}
+feedCount++;
+document.getElementById('feedCount').textContent=feedCount+' PONTOS';
+document.getElementById('feedText').textContent=(team==='red'?'VERMELHO':'AZUL')+' +'+pts+' • '+label+' • Dano no adversário +'+dmg;
+update();
+}
+function setRound(n){ round=n; update(); }
+function tick(){ if(timeLeft>0){ timeLeft--; update(); if(timeLeft===0){ clearInterval(timer); running=false; update(); showWinner(); } } }
+document.getElementById('btnStart').onclick=()=>{ if(running){ clearInterval(timer); running=false; } else { if(timeLeft<=0) timeLeft=baseMin*60; timer=setInterval(tick,1000); running=true; } update(); };
+document.getElementById('btnPlus').onclick=()=>{ timeLeft+=60; update(); };
+document.getElementById('btnZero').onclick=()=>{ clearInterval(timer); running=false; timeLeft=baseMin*60; update(); document.getElementById('feedText').textContent='Tempo zerado para '+fmt(timeLeft)+' • Placar, dano e feed mantidos'; };
+document.getElementById('btnReset').onclick=()=>resetAll();
+function resetAll(){ red=0; blue=0; dmgRed=0; dmgBlue=0; feedCount=0; round=1; timeLeft=baseMin*60; clearInterval(timer); running=false; document.getElementById('feedCount').textContent='NENHUM PONTO AINDA'; document.getElementById('feedText').textContent='Toque em +1, +5 ou +10 conforme o chat participar.'; update(); }
+document.querySelectorAll('.mins button').forEach(b=>{ b.onclick=()=>{ document.querySelectorAll('.mins button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); baseMin=Number(b.dataset.min); timeLeft=baseMin*60; clearInterval(timer); running=false; update(); }});
+document.querySelectorAll('.rounds button[data-round]').forEach(b=>{ b.onclick=()=>setRound(Number(b.dataset.round)); });
+document.getElementById('btnNext').onclick=()=>{ if(round<3) round++; else round=1; update(); };
+document.getElementById('btnWinner').onclick=()=>showWinner();
+function showWinner(){
+let w = red===blue ? null : (red>blue?'red':'blue');
+let title = w===null ? 'EMPATE!<br>DESEMPATE?' : (w==='red'?'VERMELHO<br>VENCEU!':'AZUL<br>VENCEU!');
+document.getElementById('winTitle').innerHTML=title;
+document.getElementById('winScore').textContent=red+' X '+blue;
+document.getElementById('winDetail').textContent='Vermelho '+Math.round(red/((red+blue)||1)*100)+'% • Azul '+Math.round(blue/((red+blue)||1)*100)+'% • Dano Vermelho '+dmgRed+' • Dano Azul '+dmgBlue;
+document.getElementById('overlay').classList.add('show');
+}
+function closeOverlay(){ document.getElementById('overlay').classList.remove('show'); }
+update();
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script>
+
+<p></body></html></p>
+<script>window.webkit.messageHandlers.TextLoaded.postMessage('TextLoaded')</script></body></html>
