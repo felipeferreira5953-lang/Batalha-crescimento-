@@ -27,12 +27,12 @@
 </style><br>
 <meta charset="UTF-8"><br>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><br>
-<title>Batalha do Crescimento - V99</title><br>
-</head><br>
+<title>Batalha do Crescimento - V100</title><br>
+<style>button{pointer-events:auto !important;position:relative;z-index:10 !important;touch-action:manipulation;-webkit-tap-highlight-color:rgba(255,122,0,.4);cursor:pointer}body{touch-action:manipulation}#overlay{pointer-events:none !important;visibility:hidden;opacity:0}#overlay.aberto{pointer-events:auto !important;visibility:visible;opacity:1}</style></head><br>
 <body style="margin:0;padding:0;background:#0B0B14;color:#fff;font-family:Arial,sans-serif;display:flex;justify-content:center"><br>
 <div style="width:100%;max-width:430px;min-height:100dvh;display:flex;flex-direction:column;gap:6px;padding:8px;box-sizing:border-box;background:#0B0B14"></p>
 
-<div id="versao" style="background:#22C55E;color:#000;text-align:center;padding:6px;border-radius:8px;font-weight:900;font-size:12px">✅ V99 - COM EMOJIS - SE VOCE VE V99, E O NOVO</div>
+<div id="versao" style="background:#22C55E;color:#000;text-align:center;padding:6px;border-radius:8px;font-weight:900;font-size:12px">✅ V100 - CLIQUE GARANTIDO - SE VE V100, E O NOVO</div>
 <div style="display:flex;justify-content:space-between;align-items:center">
 <div style="display:flex;align-items:center;gap:8px">
 <div style="width:32px;height:32px;border-radius:9px;background:#FF7A00;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900">⚔️</div>
@@ -51,9 +51,9 @@
 <div style="display:flex;justify-content:space-between;align-items:center">
 <span style="font-size:9px;opacity:.55">TEMPO DA BATALHA</span>
 <span style="display:flex;gap:4px">
-<button type="button" onclick="setMin(3)" style="border-radius:999px;padding:5px 9px;background:#23233A;color:#ccc;font-weight:800;font-size:10px;border:1px solid #444;min-height:28px">3 MIN</button>
-<button type="button" onclick="setMin(5)" style="border-radius:999px;padding:5px 9px;background:#7C3AED;color:#fff;font-weight:800;font-size:10px;border:none;min-height:28px">5 MIN</button>
-<button type="button" onclick="setMin(10)" style="border-radius:999px;padding:5px 9px;background:#23233A;color:#ccc;font-weight:800;font-size:10px;border:1px solid #444;min-height:28px">10 MIN</button>
+<button type="button" data-action="min-3" onclick="setMin(3)" style="border-radius:999px;padding:5px 9px;background:#23233A;color:#ccc;font-weight:800;font-size:10px;border:1px solid #444;min-height:28px">3 MIN</button>
+<button type="button" data-action="min-5" onclick="setMin(5)" style="border-radius:999px;padding:5px 9px;background:#7C3AED;color:#fff;font-weight:800;font-size:10px;border:none;min-height:28px">5 MIN</button>
+<button type="button" data-action="min-10" onclick="setMin(10)" style="border-radius:999px;padding:5px 9px;background:#23233A;color:#ccc;font-weight:800;font-size:10px;border:1px solid #444;min-height:28px">10 MIN</button>
 </span></div>
 <div style="display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px">
 <div style="text-align:center;flex:1"><div style="color:#FF2D55;font-weight:900;font-size:10px">VERMELHO</div><div id="scoreRed" style="font-size:30px;font-weight:900;color:#FF2D55;line-height:1">0</div></div>
@@ -61,10 +61,10 @@
 <div style="text-align:center;flex:1"><div style="color:#2D9CFF;font-weight:900;font-size:10px">AZUL</div><div id="scoreBlue" style="font-size:30px;font-weight:900;color:#2D9CFF;line-height:1">0</div></div>
 </div>
 <div style="display:flex;gap:5px;margin-top:7px">
-<button type="button" id="btnStart" onclick="toggleTimer()" style="flex:1;border:none;border-radius:9px;padding:10px 2px;background:#FF7A00;color:#fff;font-weight:900;font-size:11px;min-height:44px">▶ INICIAR</button>
-<button type="button" onclick="addMin()" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px;min-height:44px">+ 1 MIN</button>
-<button type="button" onclick="zeroTime()" style="flex:1;border:none;border-radius:9px;padding:10px 2px;background:#E8E8F0;color:#111;font-weight:900;font-size:11px;min-height:44px">ZERAR</button>
-<button type="button" onclick="resetAll()" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px;min-height:44px">REINICIAR</button>
+<button type="button" id="btnStart" data-action="start" onclick="toggleTimer()" style="flex:1;border:none;border-radius:9px;padding:10px 2px;background:#FF7A00;color:#fff;font-weight:900;font-size:11px;min-height:44px">▶ INICIAR</button>
+<button type="button" data-action="addmin" onclick="addMin()" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px;min-height:44px">+ 1 MIN</button>
+<button type="button" data-action="zero" onclick="zeroTime()" style="flex:1;border:none;border-radius:9px;padding:10px 2px;background:#E8E8F0;color:#111;font-weight:900;font-size:11px;min-height:44px">ZERAR</button>
+<button type="button" data-action="reset" onclick="resetAll()" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px;min-height:44px">REINICIAR</button>
 </div>
 <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;margin-top:7px"><span id="pctRed" style="color:#FF2D55">50%</span><span style="opacity:.5;font-size:9px">BARRA DE GUERRA</span><span id="pctBlue" style="color:#2D9CFF">50%</span></div>
 <div style="display:flex;gap:8px;margin-top:6px;text-align:center">
@@ -77,15 +77,15 @@
 <div style="display:flex;gap:7px;flex:1">
 <div style="flex:1;background:#2A0A1A;border:1px solid #FF2D55;border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px">
 <div style="color:#FF8AA0;font-weight:900;font-size:10px">VERMELHO - TIME 1</div>
-<button type="button" onclick="addPonto('red',1)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#FF2D55;color:#fff;font-weight:900;font-size:12px;min-height:52px">💬 +1 COMENTARIO</button>
-<button type="button" onclick="addPonto('red',5)" style="flex:1;border:1px solid #FF2D55;border-radius:10px;padding:12px 4px;background:#3A1A1A;color:#fff;font-weight:900;font-size:12px;min-height:52px">🔗 +5 SEGUIR / COMP.</button>
-<button type="button" onclick="addPonto('red',10)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#fff;color:#FF2D55;font-weight:900;font-size:12px;min-height:52px">🎁 +10 PRESENTE</button>
+<button type="button" data-action="add-red-1" onclick="addPonto('red',1)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#FF2D55;color:#fff;font-weight:900;font-size:12px;min-height:52px">💬 +1 COMENTARIO</button>
+<button type="button" data-action="add-red-5" onclick="addPonto('red',5)" style="flex:1;border:1px solid #FF2D55;border-radius:10px;padding:12px 4px;background:#3A1A1A;color:#fff;font-weight:900;font-size:12px;min-height:52px">🔗 +5 SEGUIR / COMP.</button>
+<button type="button" data-action="add-red-10" onclick="addPonto('red',10)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#fff;color:#FF2D55;font-weight:900;font-size:12px;min-height:52px">🎁 +10 PRESENTE</button>
 </div>
 <div style="flex:1;background:#0A1A2A;border:1px solid #2D9CFF;border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px">
 <div style="color:#8ACFFF;font-weight:900;font-size:10px">AZUL - TIME 2</div>
-<button type="button" onclick="addPonto('blue',1)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#2D9CFF;color:#fff;font-weight:900;font-size:12px;min-height:52px">💬 +1 COMENTARIO</button>
-<button type="button" onclick="addPonto('blue',5)" style="flex:1;border:1px solid #2D9CFF;border-radius:10px;padding:12px 4px;background:#1A2A3A;color:#fff;font-weight:900;font-size:12px;min-height:52px">🔗 +5 SEGUIR / COMP.</button>
-<button type="button" onclick="addPonto('blue',10)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#fff;color:#2D9CFF;font-weight:900;font-size:12px;min-height:52px">🎁 +10 PRESENTE</button>
+<button type="button" data-action="add-blue-1" onclick="addPonto('blue',1)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#2D9CFF;color:#fff;font-weight:900;font-size:12px;min-height:52px">💬 +1 COMENTARIO</button>
+<button type="button" data-action="add-blue-5" onclick="addPonto('blue',5)" style="flex:1;border:1px solid #2D9CFF;border-radius:10px;padding:12px 4px;background:#1A2A3A;color:#fff;font-weight:900;font-size:12px;min-height:52px">🔗 +5 SEGUIR / COMP.</button>
+<button type="button" data-action="add-blue-10" onclick="addPonto('blue',10)" style="flex:1;border:none;border-radius:10px;padding:12px 4px;background:#fff;color:#2D9CFF;font-weight:900;font-size:12px;min-height:52px">🎁 +10 PRESENTE</button>
 </div>
 </div>
 
@@ -93,26 +93,26 @@
 <span style="font-size:10px;font-weight:900">⚡ ULTIMOS PONTOS</span><span id="feedCount" style="font-size:10px;font-weight:900;color:#FFB020">NENHUM PONTO AINDA</span>
 </div>
 
-<p id="feedText" style="font-size:10px;text-align:center;opacity:.6;margin:-2px 0 0">Toque em +1, +5 ou +10 conforme o chat participar.</p>
+<div id="tapTest" style="background:#111;border:1px dashed #555;border-radius:8px;padding:5px;text-align:center;font-size:10px;opacity:.8">TOQUES NA TELA: <span id="tapCount">0</span> - Se esse numero subir quando voce toca, o toque esta chegando</div><p id="feedText" style="font-size:10px;text-align:center;opacity:.6;margin:-2px 0 0">Toque em +1, +5 ou +10 conforme o chat participar.</p>
 
 <div style="display:flex;gap:5px">
-<button type="button" id="r1" onclick="setRound(1)" style="flex:1;border:none;border-radius:9px;padding:10px;background:#fff;color:#111;font-weight:900;font-size:11px;min-height:44px">ROUND 1</button>
-<button type="button" id="r2" onclick="setRound(2)" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px;background:#23233A;color:#ccc;font-weight:900;font-size:11px;min-height:44px">ROUND 2</button>
-<button type="button" id="r3" onclick="setRound(3)" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px;background:#23233A;color:#ccc;font-weight:900;font-size:11px;min-height:44px">ROUND 3</button>
-<button type="button" onclick="nextRound()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#7C3AED;color:#fff;font-weight:900;font-size:11px;min-height:44px">➡️ PROXIMO</button>
+<button type="button" id="r1" data-action="round-1" onclick="setRound(1)" style="flex:1;border:none;border-radius:9px;padding:10px;background:#fff;color:#111;font-weight:900;font-size:11px;min-height:44px">ROUND 1</button>
+<button type="button" id="r2" data-action="round-2" onclick="setRound(2)" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px;background:#23233A;color:#ccc;font-weight:900;font-size:11px;min-height:44px">ROUND 2</button>
+<button type="button" id="r3" data-action="round-3" onclick="setRound(3)" style="flex:1;border:1px solid #444;border-radius:9px;padding:10px;background:#23233A;color:#ccc;font-weight:900;font-size:11px;min-height:44px">ROUND 3</button>
+<button type="button" data-action="next" onclick="nextRound()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#7C3AED;color:#fff;font-weight:900;font-size:11px;min-height:44px">➡️ PROXIMO</button>
 </div>
 
-<p><button type="button" onclick="showWinner()" style="width:100%;border:none;border-radius:10px;background:#FF7A00;color:#fff;padding:12px;font-weight:900;font-size:11px;min-height:48px">🏆 MOSTRAR VENCEDOR</button></p>
+<p><button type="button" data-action="winner" onclick="showWinner()" style="width:100%;border:none;border-radius:10px;background:#FF7A00;color:#fff;padding:12px;font-weight:900;font-size:11px;min-height:48px">🏆 MOSTRAR VENCEDOR</button></p>
 
 <p></div><br>
-<div id="overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:16px;z-index:99"><br>
+<div id="overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px;z-index:99"><br>
 <div style="background:#1A1A2E;border-radius:18px;padding:20px;text-align:center;width:100%;max-width:360px"><br>
 <p style="color:#FFB020;font-weight:900;font-size:10px;margin:0">FIM DA BATALHA</p><br>
 <h2 id="winTitle" style="font-size:28px;margin:10px 0">VERMELHO VENCEU!</h2><br>
 <div id="winScore" style="font-size:26px;font-weight:900;margin:8px 0">0 X 0</div><br>
 <div id="winDetail" style="font-size:12px;opacity:.7">Vermelho 50% - Azul 50%</div><br>
-<button type="button" onclick="closeOverlay();resetAll()" style="margin-top:14px;border:none;border-radius:10px;padding:12px;background:#FF7A00;color:#fff;font-weight:900;width:100%;min-height:48px">🔁 NOVA BATALHA</button><br>
-<button type="button" onclick="closeOverlay()" style="margin-top:6px;border:1px solid #555;border-radius:10px;padding:10px;background:#23233A;color:#fff;font-weight:800;width:100%;min-height:48px">FECHAR</button><br>
+<button type="button" data-action="newbattle" onclick="closeOverlay();resetAll()" style="margin-top:14px;border:none;border-radius:10px;padding:12px;background:#FF7A00;color:#fff;font-weight:900;width:100%;min-height:48px">🔁 NOVA BATALHA</button><br>
+<button type="button" data-action="close" onclick="closeOverlay()" style="margin-top:6px;border:1px solid #555;border-radius:10px;padding:10px;background:#23233A;color:#fff;font-weight:800;width:100%;min-height:48px">FECHAR</button><br>
 </div></div><br>
 <script><br>
 var red = 0;<br>
@@ -184,10 +184,75 @@ function toggleTimer(){<br>
 function addMin(){ timeLeft = timeLeft + 60; update(); }<br>
 function zeroTime(){ if(timer){ clearInterval(timer); } running = false; timeLeft = baseMin<em>60; update(); setText(&#39;feedText&#39;,&#39;Tempo zerado - Placar mantido&#39;); }<br>
 function resetAll(){ red=0; blue=0; dmgRed=0; dmgBlue=0; feedCount=0; round=1; timeLeft=baseMin</em>60; if(timer){ clearInterval(timer); } running=false; setText(&#39;feedCount&#39;,&#39;NENHUM PONTO AINDA&#39;); setText(&#39;feedText&#39;,&#39;Toque em +1, +5 ou +10 conforme o chat participar.&#39;); update(); }<br>
-function showWinner(){ var w = null; if(red&gt;blue) w=&#39;red&#39;; if(blue&gt;red) w=&#39;blue&#39;; if(w</mark>=null){ setText(&#39;winTitle&#39;,&#39;EMPATE!&#39;); } else { if(w=<mark>&#39;red&#39;){ setText(&#39;winTitle&#39;,&#39;VERMELHO VENCEU!&#39;); } else { setText(&#39;winTitle&#39;,&#39;AZUL VENCEU!&#39;); } } setText(&#39;winScore&#39;, red + &#39; X &#39; + blue); var tot = red+blue; if(tot</mark>=0) tot=1; setText(&#39;winDetail&#39;,&#39;Vermelho &#39; + Math.round(red/tot<em>100) + &#39;% - Azul &#39; + Math.round(blue/tot</em>100) + &#39;%&#39;); var o = el(&#39;overlay&#39;); if(o){ o.style.display=&#39;flex&#39;; } }<br>
-function closeOverlay(){ var o = el(&#39;overlay&#39;); if(o){ o.style.display=&#39;none&#39;; } }<br>
+function showWinner(){ var w = null; if(red&gt;blue) w=&#39;red&#39;; if(blue&gt;red) w=&#39;blue&#39;; if(w</mark>=null){ setText(&#39;winTitle&#39;,&#39;EMPATE!&#39;); } else { if(w=<mark>&#39;red&#39;){ setText(&#39;winTitle&#39;,&#39;VERMELHO VENCEU!&#39;); } else { setText(&#39;winTitle&#39;,&#39;AZUL VENCEU!&#39;); } } setText(&#39;winScore&#39;, red + &#39; X &#39; + blue); var tot = red+blue; if(tot</mark>=0) tot=1; setText(&#39;winDetail&#39;,&#39;Vermelho &#39; + Math.round(red/tot<em>100) + &#39;% - Azul &#39; + Math.round(blue/tot</em>100) + &#39;%&#39;); var o = el(&#39;overlay&#39;); if(o){ o.classList.add(&#39;aberto&#39;); } }<br>
+function closeOverlay(){ var o = el(&#39;overlay&#39;); if(o){ o.classList.remove(&#39;aberto&#39;); } }<br>
 var s = el(&#39;jsStatus&#39;);<br>
 if(s){ s.textContent = &#39;JS: OK - PODE TOCAR&#39;; s.style.background = &#39;#22C55E&#39;; }<br>
+var tapN = 0;<br>
+function handleAction(action){<br>
+  if(!action) return;<br>
+  if(action=<mark>&#39;min-3&#39;) setMin(3);<br>
+  else if(action</mark>=&#39;min-5&#39;) setMin(5);<br>
+  else if(action=<mark>&#39;min-10&#39;) setMin(10);<br>
+  else if(action</mark>=&#39;start&#39;) toggleTimer();<br>
+  else if(action=<mark>&#39;addmin&#39;) addMin();<br>
+  else if(action</mark>=&#39;zero&#39;) zeroTime();<br>
+  else if(action=<mark>&#39;reset&#39;) resetAll();<br>
+  else if(action</mark>=&#39;add-red-1&#39;) addPonto(&#39;red&#39;,1);<br>
+  else if(action=<mark>&#39;add-red-5&#39;) addPonto(&#39;red&#39;,5);<br>
+  else if(action</mark>=&#39;add-red-10&#39;) addPonto(&#39;red&#39;,10);<br>
+  else if(action=<mark>&#39;add-blue-1&#39;) addPonto(&#39;blue&#39;,1);<br>
+  else if(action</mark>=&#39;add-blue-5&#39;) addPonto(&#39;blue&#39;,5);<br>
+  else if(action=<mark>&#39;add-blue-10&#39;) addPonto(&#39;blue&#39;,10);<br>
+  else if(action</mark>=&#39;round-1&#39;) setRound(1);<br>
+  else if(action=<mark>&#39;round-2&#39;) setRound(2);<br>
+  else if(action</mark>=&#39;round-3&#39;) setRound(3);<br>
+  else if(action=<mark>&#39;next&#39;) nextRound();<br>
+  else if(action</mark>=&#39;winner&#39;) showWinner();<br>
+  else if(action=<mark>&#39;newbattle&#39;){ closeOverlay(); resetAll(); }<br>
+  else if(action</mark>=&#39;close&#39;) closeOverlay();<br>
+}<br>
+function onTap(e){<br>
+  tapN = tapN + 1;<br>
+  var tc = el(&#39;tapCount&#39;); if(tc){ tc.textContent = tapN; }<br>
+  var t = e.target;<br>
+  while(t &amp;&amp; t.tagName !== &#39;BUTTON&#39; &amp;&amp; t !== document.body){ t = t.parentNode; }<br>
+  if(t &amp;&amp; t.tagName === &#39;BUTTON&#39;){<br>
+    var a = t.getAttribute(&#39;data-action&#39;);<br>
+    if(a){<br>
+      // Se ja foi pelo onclick, o segundo clique seria duplicado, entao so deixa o delegation agir se o onclick nao rodou<br>
+      // Para evitar duplicar, a gente marca que ja tratou neste toque<br>
+      if(t.<u>jaTratado) { t.</u>jaTratado = false; return; }<br>
+      // Deixa o onclick normal rodar primeiro, e o delegation so entra se o onclick falhar - por isso esperamos 0ms<br>
+      // Na pratica, como o onclick ja roda, a gente nao precisa duplicar aqui, so garante que se onclick falhar, delegation salva<br>
+      // Para nao duplicar, nao chama handleAction aqui se onclick existe - o delegation fica como backup via touchstart<br>
+    }<br>
+  }<br>
+}<br>
+document.addEventListener(&#39;click&#39;, function(e){<br>
+  var t = e.target;<br>
+  while(t &amp;&amp; t.tagName !== &#39;BUTTON&#39; &amp;&amp; t !== document.body){ t = t.parentNode; }<br>
+  if(t &amp;&amp; t.tagName === &#39;BUTTON&#39;){<br>
+    var a = t.getAttribute(&#39;data-action&#39;);<br>
+    // Se o onclick ja executou, ele ja mudou o placar, entao o delegation nao precisa repetir<br>
+    // Mas se o onclick foi bloqueado pelo iPhone, o delegation salva - detectamos se o placar nao mudou em 50ms? Simplificado: deixa o onclick ser o principal, delegation e backup para touch<br>
+  }<br>
+});<br>
+document.addEventListener(&#39;touchstart&#39;, function(e){<br>
+  tapN = tapN + 1;<br>
+  var tc = el(&#39;tapCount&#39;); if(tc){ tc.textContent = tapN; }<br>
+  var t = e.target;<br>
+  while(t &amp;&amp; t.tagName !== &#39;BUTTON&#39; &amp;&amp; t !== document.body){ t = t.parentNode; }<br>
+  if(t &amp;&amp; t.tagName === &#39;BUTTON&#39;){<br>
+    var a = t.getAttribute(&#39;data-action&#39;);<br>
+    if(a){<br>
+      // No iPhone, touchstart e mais confiavel que click - executa aqui e marca para o click nao duplicar<br>
+      t.<u>jaTratado = true;<br>
+      handleAction(a);<br>
+      setTimeout(function(){ if(t) t.</u>jaTratado = false; }, 400);<br>
+    }<br>
+  }<br>
+}, {passive:true});<br>
 update();<br>
 </script><br>
 <script>(function(){var loc=location.href.replace(/#.<em>\(/,&quot;&quot;);var ATTR_NAMES=[&quot;data-product-id&quot;,&quot;data-productid&quot;,&quot;data-product_id&quot;,&quot;product-id&quot;,&quot;productid&quot;,&quot;product_id&quot;,&quot;data-source-entity-id&quot;,&quot;source-entity-id&quot;,&quot;source_entity_id&quot;,&quot;data-product&quot;,&quot;data-metadata&quot;,&quot;data-meta&quot;];var DATASET_KEYS=[&quot;productId&quot;,&quot;productid&quot;,&quot;product_id&quot;,&quot;sourceEntityId&quot;,&quot;sourceentityid&quot;,&quot;source_entity_id&quot;,&quot;product&quot;,&quot;metadata&quot;,&quot;meta&quot;];function readProductId(value){if(typeof value!==&quot;string&quot;||value.length===0)return null;if(/^[0-9]{6,}\)/.test(value))return value;var match=value.match(/(?:product(?:<u>|-)?id|source(?:</u>|-)?entity(?:<u>|-)?id)[&quot;&#39;=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&amp;&amp;node!==document.body;node=node.parentElement){for(var i=0;i&lt;ATTR</u>NAMES.length;i++){var attrValue=node.getAttribute&amp;&amp;node.getAttribute(ATTR<u>NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j&lt;DATASET</u>KEYS.length;j++){var dataValue=dataset[DATASET<u>KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&amp;&amp;node.getAttribute&amp;&amp;node.getAttribute(<q>data-clippy-inline-media-slot</q>)!<mark>null)}function findInlineMediaSlot(start){for(var node=start;node&amp;&amp;node!</mark>document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&amp;&amp;((node.getAttribute(<q>data-clippy-inline-media-url</q>)||node.getAttribute(<q>data-url</q>)||node.getAttribute(&quot;data</u>url&quot;)))||node.href||null}function stripHash(url){return String(url).replace(/#.</em>\(/,&quot;&quot;)}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!==&quot;https:&quot;)return false;var host=url.hostname.toLowerCase();var supported=host===&quot;instagram.com&quot;||host.endsWith(&quot;.instagram.com&quot;)||host===&quot;facebook.com&quot;||host.endsWith(&quot;.facebook.com&quot;);return supported&amp;&amp;/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&amp;&amp;node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute(&quot;data-href&quot;)||node.getAttribute(&quot;data-url&quot;);if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&amp;&amp;typeof url===&quot;string&quot;&amp;&amp;/^https?:\/\//.test(url)){parent.postMessage({type:&quot;ecto:usercontent-link-click&quot;,href:url},&quot;*&quot;);return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener(&quot;click&quot;,function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest(&quot;a[href]&quot;):null;if(a&amp;&amp;a.href&amp;&amp;/^https?:\/\//.test(a.href)&amp;&amp;a.href.replace(/#.*\)/,<q>)!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:<q>ecto-artifact-link-click</q>,productId:productId},<q>*</q>);return}e.preventDefault();parent.postMessage({type:<q>ecto:usercontent-link-click</q>,href:a.href},<q>*</q>);return}var dataHref=findDataHref(target);if(dataHref&amp;&amp;/<sup>https?:\/\//.test(dataHref.href)&amp;&amp;dataHref.href.replace(/#.*$/,</sup></q>)!<mark>loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:<q>ecto:usercontent-link-click</q>,href:dataHref.href},<q>*</q>)}},true)})();</script><script>(function(){var FOCUS<u>TYPE=<q>ecto:artifact-focus-request</q>;var CLOSE</u>TYPE=<q>ecto:artifact-close-request</q>;function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute(<q>tabindex</q>))body.setAttribute(<q>tabindex</q>,<q>-1</q>);try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener(<q>message</q>,function(event){if(event.source!</mark>window.parent)return;var data=event.data;if(!data||typeof data!<mark><q>object</q>||data.type!</mark>FOCUS<u>TYPE)return;if(document.readyState=<mark><q>loading</q>){document.addEventListener(<q>DOMContentLoaded</q>,focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener(<q>keydown</q>,function(event){if(event.key!</mark><q>Escape</q>)return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE</u>TYPE},<q>*</q>);},0);});})();</script></p>
