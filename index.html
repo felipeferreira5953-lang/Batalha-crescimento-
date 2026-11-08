@@ -28,119 +28,173 @@
 <meta charset="UTF-8"><br>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><br>
 <title>Batalha do Crescimento</title><br>
-<meta name="theme-color" content="#0F0F1A"><br>
-<meta name="mobile-web-app-capable" content="yes"><br>
-<meta name="apple-mobile-web-app-capable" content="yes"><br>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><br>
-<meta name="apple-mobile-web-app-title" content="Batalha"><br>
-<link rel="manifest" href="manifest.json"><br>
-<link rel="apple-touch-icon" href="icon.png"><br>
-<link rel="icon" type="image/png" href="icon.png"><br>
+<meta name="theme-color" content="#0B0B14"><br>
+<style>*{-webkit-tap-highlight-color:transparent;box-sizing:border-box}body{margin:0;background:#0B0B14}button{cursor:pointer;touch-action:manipulation;border:none}button:active{transform:scale(.96)}button:disabled{opacity:.6}</style><br>
 </head><br>
-<body style="margin:0;padding:0;background:#0F0F1A;color:#fff;font-family:Arial,sans-serif;display:flex;justify-content:center"><br>
-<div style="width:100%;max-width:480px;min-height:100vh;background:#0F0F1A;padding:10px;box-sizing:border-box"><br>
-<div style="background:#FF7A00;color:#fff;text-align:center;padding:8px;border-radius:10px;font-weight:900;font-size:13px">SE VOCE VE ESSA FAIXA LARANJA, O ESTILO FUNCIONOU</div><br>
-<h1 style="text-align:center;font-size:24px;margin:10px 0 0">BATALHA DO <span style="color:#FF7A00">CRESCIMENTO</span></h1><br>
-<div style="background:#2A1A4A;border:1px solid #444;border-radius:12px;padding:10px;margin-top:10px"><br>
-<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;opacity:.7">ROUND ATUAL</span><span id="roundTitle" style="font-weight:900;font-size:14px">ROUND 1 - COMENTARIO</span><span style="background:#FF7A00;color:#fff;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900">Use +1</span></div><br>
-<p id="roundDesc" style="font-size:12px;opacity:.8;margin:6px 0 0">Cada comentario no chat vale +1. Marque na hora para o time subir.</p><br>
-<div style="height:6px;background:#444;border-radius:999px;margin-top:8px;overflow:hidden"><div id="progressBar" style="height:100%;width:50%;background:#FF7A00"></div></div><br>
-</div><br>
-<div style="background:#151528;border:1px solid #333;border-radius:14px;padding:10px;margin-top:10px"><br>
-<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;opacity:.6">TEMPO DA BATALHA</span><span><button data-min="3" onclick="setMin(3,this)" style="border:none;border-radius:999px;padding:5px 10px;background:#2A2A44;color:#ccc;font-weight:800">3 MIN</button> <button data-min="5" onclick="setMin(5,this)" style="border:none;border-radius:999px;padding:5px 10px;background:#7C3AED;color:#fff;font-weight:800">5 MIN</button> <button data-min="10" onclick="setMin(10,this)" style="border:none;border-radius:999px;padding:5px 10px;background:#2A2A44;color:#ccc;font-weight:800">10 MIN</button></span></div><br>
-<div id="time" style="font-size:42px;font-weight:900;text-align:center;margin-top:4px">05:00</div><br>
-<div id="status" style="font-size:12px;text-align:center;opacity:.6">Pronto para comecar</div><br>
-<div style="display:flex;gap:6px;margin-top:8px"><br>
-<button id="btnStart" onclick="toggleTimer()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#FF7A00;color:#fff;font-weight:900">▶ INICIAR</button><br>
-<button onclick="addMin()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#2A2A44;color:#fff;font-weight:900">+ 1 MIN</button><br>
-<button onclick="zeroTime()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#D8D8E6;color:#111;font-weight:900">ZERAR TEMPO</button><br>
-<button onclick="resetAll()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#2A2A44;color:#fff;font-weight:900">REINICIAR</button><br>
-</div><br>
-<div style="display:flex;justify-content:space-between;text-align:center;margin-top:12px"><br>
-<div><div style="color:#FF2D55;font-weight:900;font-size:12px">VERMELHO</div><div id="scoreRed" style="font-size:36px;font-weight:900;color:#FF2D55">0</div></div><br>
-<div><div style="font-size:20px;opacity:.5">X</div><div style="font-size:10px;opacity:.5">PLACAR</div></div><br>
-<div><div style="color:#2D9CFF;font-weight:900;font-size:12px">AZUL</div><div id="scoreBlue" style="font-size:36px;font-weight:900;color:#2D9CFF">0</div></div><br>
-</div><br>
-<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800;margin-top:6px"><span id="pctRed" style="color:#FF2D55">50%</span><span style="opacity:.6">BARRA DE GUERRA</span><span id="pctBlue" style="color:#2D9CFF">50%</span></div><br>
-<div style="display:flex;gap:10px;margin-top:8px;text-align:center"><br>
-<div id="fighterRed" style="flex:1;background:#2A1A1A;border-radius:12px;padding:8px"><div id="faceRed" style="font-size:56px">😤</div><div style="height:7px;background:#222;border-radius:999px;margin:6px 4px 0;overflow:hidden"><div id="lifeRed" style="height:100%;width:100%;background:#22C55E"></div></div><div id="dmgRed" style="font-size:11px;margin-top:4px">Vida 100% - Limpo</div></div><br>
-<div style="align-self:center;font-size:20px">⚡</div><br>
-<div id="fighterBlue" style="flex:1;background:#1A1A2A;border-radius:12px;padding:8px"><div id="faceBlue" style="font-size:56px">😤</div><div style="height:7px;background:#222;border-radius:999px;margin:6px 4px 0;overflow:hidden"><div id="lifeBlue" style="height:100%;width:100%;background:#22C55E"></div></div><div id="dmgBlue" style="font-size:11px;margin-top:4px">Vida 100% - Limpo</div></div><br>
-</div><br>
-</div><br>
-<div style="display:flex;gap:8px;margin-top:10px"><br>
-<div style="flex:1;background:#2A1218;border:1px solid #FF2D55;border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px"><b style="font-size:12px;color:#FF7A9A">VERMELHO</b><br>
-<button onclick="add('red',1)" style="border:none;border-radius:10px;padding:11px;background:#FF2D55;color:#fff;font-weight:900">💬 +1 COMENTARIO</button><br>
-<button onclick="add('red',5)" style="border:none;border-radius:10px;padding:11px;background:#FF2D55;color:#fff;font-weight:900">🔗 +5 SEGUIR / COMPART.</button><br>
-<button onclick="add('red',10)" style="border:none;border-radius:10px;padding:11px;background:#FF2D55;color:#fff;font-weight:900">🎁 +10 PRESENTE</button><br>
-</div><br>
-<div style="flex:1;background:#121A2A;border:1px solid #2D9CFF;border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px"><b style="font-size:12px;color:#7AC0FF">AZUL</b><br>
-<button onclick="add('blue',1)" style="border:none;border-radius:10px;padding:11px;background:#2D9CFF;color:#fff;font-weight:900">💬 +1 COMENTARIO</button><br>
-<button onclick="add('blue',5)" style="border:none;border-radius:10px;padding:11px;background:#2D9CFF;color:#fff;font-weight:900">🔗 +5 SEGUIR / COMPART.</button><br>
-<button onclick="add('blue',10)" style="border:none;border-radius:10px;padding:11px;background:#2D9CFF;color:#fff;font-weight:900">🎁 +10 PRESENTE</button><br>
-</div><br>
-</div><br>
-<div style="background:#222;border-radius:10px;padding:8px;margin-top:10px"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:900"><span>⚡ ULTIMOS PONTOS</span><span id="feedCount" style="opacity:.6">NENHUM PONTO AINDA</span></div><div id="feedText" style="font-size:12px;opacity:.8;text-align:center;margin-top:4px">Toque em +1, +5 ou +10 conforme o chat participar.</div></div><br>
-<div style="display:flex;gap:6px;margin-top:10px"><br>
-<button onclick="setRound(1)" id="r1" style="flex:1;border:none;border-radius:9px;padding:10px;background:#fff;color:#111;font-weight:900">ROUND 1</button><br>
-<button onclick="setRound(2)" id="r2" style="flex:1;border:none;border-radius:9px;padding:10px;background:#2A2A44;color:#ccc;font-weight:900">ROUND 2</button><br>
-<button onclick="setRound(3)" id="r3" style="flex:1;border:none;border-radius:9px;padding:10px;background:#2A2A44;color:#ccc;font-weight:900">ROUND 3</button><br>
-<button onclick="nextRound()" style="flex:1;border:none;border-radius:9px;padding:10px;background:#7C3AED;color:#fff;font-weight:900">PROXIMO →</button><br>
-</div><br>
-<button onclick="showWinner()" style="width:100%;border:none;border-radius:11px;background:#FF7A00;color:#fff;padding:12px;font-weight:900;margin-top:8px">🏆 MOSTRAR VENCEDOR</button><br>
-</div><br>
-<div id="overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:16px;z-index:99"><br>
-<div style="background:#1E1E33;border-radius:16px;padding:18px;text-align:center;width:100%;max-width:380px"><br>
-<p style="color:#FFB020;font-weight:900;letter-spacing:2px;font-size:11px">FIM DA BATALHA</p><br>
-<h2 id="winTitle" style="font-size:32px;margin:8px 0">VERMELHO VENCEU!</h2><br>
-<div id="winScore" style="font-size:30px;font-weight:900;margin:8px 0">0 X 0</div><br>
-<p id="winDetail" style="opacity:.7;font-size:13px"></p><br>
-<button onclick="closeOverlay();resetAll()" style="width:100%;border:none;border-radius:11px;padding:12px;margin-top:10px;background:#fff;color:#111;font-weight:900">NOVA BATALHA</button><br>
-<button onclick="closeOverlay()" style="width:100%;border:none;border-radius:11px;padding:12px;margin-top:8px;background:transparent;color:#fff;border:1px solid #666;font-weight:900">VER PLACAR FINAL</button><br>
-</div><br>
-</div><br>
+<body style="margin:0;padding:0;background:#0B0B14;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;display:flex;justify-content:center;overflow:hidden"><br>
+<div style="width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;gap:6px;padding:8px;box-sizing:border-box;overflow:hidden;background:radial-gradient(600px 200px at 50% -50px,rgba(124,58,237,.22),transparent),#0B0B14"></p>
+
+<div style="display:flex;justify-content:space-between;align-items:center;padding:1px 2px 0">
+<div style="display:flex;align-items:center;gap:8px">
+<div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#FF7A00,#FF2D55);display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px rgba(255,122,0,.4)">⚔️</div>
+<div><div style="font-size:14px;font-weight:900;letter-spacing:.4px;line-height:1">BATALHA DO <span style="color:#FF7A00">CRESCIMENTO</span></div><div style="font-size:9px;opacity:.55;letter-spacing:1.2px;margin-top:2px">LIVE • VERMELHO VS AZUL • SEM BUG</div></div>
+</div>
+<div style="display:flex;align-items:center;gap:5px;background:#FF2D55;color:#fff;border-radius:999px;padding:4px 8px;font-size:9px;font-weight:900;letter-spacing:.8px"><span style="width:6px;height:6px;background:#fff;border-radius:50%;display:inline-block"></span> AO VIVO</div>
+</div>
+
+<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:7px 10px;display:flex;justify-content:space-between;align-items:center">
+<div><div style="font-size:9px;opacity:.5;letter-spacing:1.2px">ROUND ATUAL</div><div id="roundTitle" style="font-size:12px;font-weight:900;margin-top:1px">ROUND 1 — COMENTÁRIO</div><div id="roundDesc" style="font-size:10px;opacity:.65;margin-top:1px">Cada comentário vale +1</div></div>
+<span style="background:#FF7A00;color:#fff;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900;white-space:nowrap">USE +1</span>
+</div>
+<div style="height:4px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-top:-3px"><div id="progressBar" style="height:100%;width:50%;background:linear-gradient(90deg,#FF2D55,#FF7A00,#2D9CFF);transition:width .3s"></div></div>
+
+<div style="background:linear-gradient(180deg,#1A1A2E,#151528);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:8px 10px;box-shadow:0 8px 24px rgba(0,0,0,.35)">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<span style="font-size:9px;opacity:.55;letter-spacing:1.2px">TEMPO DA BATALHA</span>
+<span style="display:flex;gap:4px">
+<button type="button" data-min="3" style="border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 8px;background:#23233A;color:#ccc;font-weight:800;font-size:10px">3 MIN</button>
+<button type="button" data-min="5" style="border:none;border-radius:999px;padding:3px 8px;background:#7C3AED;color:#fff;font-weight:800;font-size:10px">5 MIN</button>
+<button type="button" data-min="10" style="border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 8px;background:#23233A;color:#ccc;font-weight:800;font-size:10px">10 MIN</button>
+</span></div>
+<div style="display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:2px">
+<div style="text-align:center;flex:1"><div style="color:#FF2D55;font-weight:900;font-size:10px;letter-spacing:1px">VERMELHO</div><div id="scoreRed" style="font-size:30px;font-weight:900;color:#FF2D55;line-height:1;margin-top:2px">0</div></div>
+<div style="text-align:center"><div id="time" style="font-size:30px;font-weight:900;letter-spacing:-.5px;line-height:1">05:00</div><div id="status" style="font-size:9px;opacity:.55;margin-top:2px">Pronto para começar</div></div>
+<div style="text-align:center;flex:1"><div style="color:#2D9CFF;font-weight:900;font-size:10px;letter-spacing:1px">AZUL</div><div id="scoreBlue" style="font-size:30px;font-weight:900;color:#2D9CFF;line-height:1;margin-top:2px">0</div></div>
+</div>
+<div style="display:flex;gap:5px;margin-top:7px">
+<button type="button" id="btnStart" style="flex:1;border:none;border-radius:9px;padding:8px 2px;background:linear-gradient(135deg,#FF7A00,#FF5A00);color:#fff;font-weight:900;font-size:11px;box-shadow:0 4px 12px rgba(255,122,0,.3)">▶ INICIAR</button>
+<button type="button" id="btnAddMin" style="flex:1;border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px">+ 1 MIN</button>
+<button type="button" id="btnZero" style="flex:1;border:none;border-radius:9px;padding:8px 2px;background:#E8E8F0;color:#111;font-weight:900;font-size:11px">ZERAR</button>
+<button type="button" id="btnReset" style="flex:1;border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 2px;background:#23233A;color:#fff;font-weight:800;font-size:11px">REINICIAR</button>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;margin-top:7px"><span id="pctRed" style="color:#FF2D55">50%</span><span style="opacity:.5;letter-spacing:1px;font-size:9px">BARRA DE GUERRA</span><span id="pctBlue" style="color:#2D9CFF">50%</span></div>
+<div style="display:flex;gap:8px;margin-top:6px;text-align:center">
+<div style="flex:1;background:rgba(255,45,85,.12);border:1px solid rgba(255,45,85,.25);border-radius:10px;padding:5px"><div id="faceRed" style="font-size:30px;line-height:1">😤</div><div style="height:6px;background:rgba(0,0,0,.4);border-radius:999px;margin:4px 6px 0;overflow:hidden"><div id="lifeRed" style="height:100%;width:100%;background:#22C55E;border-radius:999px"></div></div><div id="dmgRed" style="font-size:9px;margin-top:3px;opacity:.85">Vida 100% • Limpo</div></div>
+<div style="align-self:center;font-size:16px">⚡</div>
+<div style="flex:1;background:rgba(45,156,255,.12);border:1px solid rgba(45,156,255,.25);border-radius:10px;padding:5px"><div id="faceBlue" style="font-size:30px;line-height:1">😤</div><div style="height:6px;background:rgba(0,0,0,.4);border-radius:999px;margin:4px 6px 0;overflow:hidden"><div id="lifeBlue" style="height:100%;width:100%;background:#22C55E;border-radius:999px"></div></div><div id="dmgBlue" style="font-size:9px;margin-top:3px;opacity:.85">Vida 100% • Limpo</div></div>
+</div>
+</div>
+
+<div style="display:flex;gap:7px;flex:1;min-height:0">
+<div style="flex:1;background:linear-gradient(180deg,rgba(255,45,85,.14),rgba(255,45,85,.04));border:1px solid rgba(255,45,85,.35);border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="color:#FF8AA0;font-weight:900;font-size:10px;letter-spacing:.8px">● VERMELHO</span><span style="font-size:9px;opacity:.5">TIME 1</span></div>
+<button type="button" data-add="red-1" style="flex:1;border:none;border-radius:10px;padding:8px 4px;background:linear-gradient(135deg,#FF2D55,#FF5A5A);color:#fff;font-weight:900;font-size:11px;box-shadow:0 4px 12px rgba(255,45,85,.3);display:flex;flex-direction:column;gap:1px;align-items:center;justify-content:center"><span style="font-size:13px">💬 +1</span><span style="font-size:9px;opacity:.9;letter-spacing:.5px">COMENTÁRIO</span></button>
+<button type="button" data-add="red-5" style="flex:1;border:1px solid rgba(255,45,85,.5);border-radius:10px;padding:8px 4px;background:rgba(255,45,85,.15);color:#fff;font-weight:900;font-size:11px;display:flex;flex-direction:column;gap:1px;align-items:center;justify-content:center"><span style="font-size:13px">🔗 +5</span><span style="font-size:9px;opacity:.85;letter-spacing:.5px">SEGUIR / COMP.</span></button>
+<button type="button" data-add="red-10" style="flex:1;border:none;border-radius:10px;padding:8px 4px;background:#fff;color:#FF2D55;font-weight:900;font-size:11px;display:flex;flex-direction:column;gap:1px;align-items:center;justify-content:center"><span style="font-size:13px">🎁 +10</span><span style="font-size:9px;letter-spacing:.5px">PRESENTE</span></button>
+</div>
+<div style="flex:1;background:linear-gradient(180deg,rgba(45,156,255,.14),rgba(45,156,255,.04));border:1px solid rgba(45,156,255,.35);border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="color:#8ACFFF;font-weight:900;font-size:10px;letter-spacing:.8px">● AZUL</span><span style="font-size:9px;opacity:.5">TIME 2</span></div>
+<button type="button" data-add="blue-1" style="flex:1;border:none;border-radius:10px;padding:8px 4px;background:linear-gradient(135deg,#2D9CFF,#00C6FF);color:#fff;font-weight:900;font-size:11px;box-shadow:0 4px 12px rgba(45,156,255,.3);display:flex;flex-direction:column;gap:1px;align-items:center;justify-content:center"><span style="font-size:13px">💬 +1</span><span style="font-size:9px;opacity:.9;letter-spacing:.5px">COMENTÁRIO</span></button>
+<button type="button" data-add="blue-5" style="flex:1;border:1px solid rgba(45,156,255,.5);border-radius:10px;padding:8px 4px;background:rgba(45,156,255,.15);color:#fff;font-weight:900;font-size:11px;display:flex;flex-direction:column;gap:1px;align-items:center;justify-content:center"><span style="font-size:13px">🔗 +5</span><span style="font-size:9px;opacity:.85;letter-spacing:.5px">SEGUIR / COMP.</span></button>
+<button type="button" data-add="blue-10" style="flex:1;border:none;border-radius:10px;padding:8px 4px;background:#fff;color:#2D9CFF;font-weight:900;font-size:11px;display:flex;flex-direction:column;gap:1px;align-items:center;justify-content:center"><span style="font-size:13px">🎁 +10</span><span style="font-size:9px;letter-spacing:.5px">PRESENTE</span></button>
+</div>
+</div>
+
+<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:6px 9px;display:flex;justify-content:space-between;align-items:center">
+<span style="font-size:10px;font-weight:900;letter-spacing:.6px">⚡ ÚLTIMOS PONTOS</span><span id="feedCount" style="font-size:10px;font-weight:900;color:#FFB020">NENHUM PONTO AINDA</span>
+</div>
+
+<p id="feedText" style="font-size:10px;text-align:center;opacity:.6;margin:-2px 0 0">Toque em +1, +5 ou +10 conforme o chat participar.</p>
+
+<div style="display:flex;gap:5px">
+<button type="button" data-round="1" id="r1" style="flex:1;border:none;border-radius:9px;padding:8px;background:#fff;color:#111;font-weight:900;font-size:11px">ROUND 1</button>
+<button type="button" data-round="2" id="r2" style="flex:1;border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px;background:#23233A;color:#ccc;font-weight:900;font-size:11px">ROUND 2</button>
+<button type="button" data-round="3" id="r3" style="flex:1;border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px;background:#23233A;color:#ccc;font-weight:900;font-size:11px">ROUND 3</button>
+<button type="button" id="btnNext" style="flex:1;border:none;border-radius:9px;padding:8px;background:linear-gradient(135deg,#7C3AED,#A855F7);color:#fff;font-weight:900;font-size:11px">PRÓXIMO →</button>
+</div>
+
+<p><button type="button" id="btnWinner" style="width:100%;border:none;border-radius:10px;background:linear-gradient(135deg,#FF7A00,#FF5A00);color:#fff;padding:9px;font-weight:900;font-size:11px;letter-spacing:.5px">🏆 MOSTRAR VENCEDOR</button></p>
+
+<p></div><br>
+<div id="overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:16px;z-index:99"><br>
+<div style="background:#1A1A2E;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px;text-align:center;width:100%;max-width:360px;box-shadow:0 20px 50px rgba(0,0,0,.6)"><br>
+<p style="color:#FFB020;font-weight:900;letter-spacing:2px;font-size:10px;margin:0">FIM DA BATALHA</p><br>
+<h2 id="winTitle" style="font-size:28px;margin:10px 0">VERMELHO VENCEU!</h2><br>
+<div id="winScore" style="font-size:26px;font-weight:900;margin:8px 0">0 X 0</div><br>
+<div id="winDetail" style="font-size:12px;opacity:.7">Vermelho 50% • Azul 50%</div><br>
+<button type="button" id="btnNewBattle" style="margin-top:14px;border:none;border-radius:10px;padding:12px;background:linear-gradient(135deg,#FF7A00,#FF5A00);color:#fff;font-weight:900;width:100%">🔁 NOVA BATALHA</button><br>
+<button type="button" id="btnClose" style="margin-top:6px;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px;background:#23233A;color:#fff;font-weight:800;width:100%">FECHAR</button><br>
+</div></div><br>
 <script><br>
-let red=0,blue=0,dmgRed=0,dmgBlue=0,round=1,baseMin=5,timeLeft=300,timer=null,running=false,feedCount=0;<br>
-const rounds=[{t:&#39;ROUND 1 - COMENTARIO&#39;,d:&#39;Cada comentario no chat vale +1. Marque na hora para o time subir.&#39;},{t:&#39;ROUND 2 - SEGUIR / COMPART.&#39;,d:&#39;Cada seguir ou compartilhar vale +5. Hora de crescer o time!&#39;},{t:&#39;ROUND 3 - PRESENTE&#39;,d:&#39;Cada presente vale +10. Reta final, vale tudo!&#39;}];<br>
-function fmt(s){let m=Math.floor(s/60),sec=s%60;return String(m).padStart(2,&#39;0&#39;)+&#39;:&#39;+String(sec).padStart(2,&#39;0&#39;)}<br>
-function face(d){if(d=<mark>0)return &#39;😤&#39;;if(d&lt;5)return &#39;😓&#39;;if(d&lt;10)return &#39;🤕&#39;;if(d&lt;15)return &#39;🥴&#39;;return &#39;😵‍💫&#39;}<br>
-function label(d){if(d</mark>=0)return &#39;Limpo&#39;;if(d<5)return 'Leve - Olho roxo';if(d<10)return 'Medio - Curativo';if(d<15)return 'Pesado - Cambaleando';return 'CRITICO - Detonado'}<br>
+(function(){<br>
+&#39;use strict&#39;;<br>
+var red=0, blue=0, dmgRed=0, dmgBlue=0, round=1, baseMin=5, timeLeft=300, timer=null, running=false, feedCount=0;<br>
+var rounds=[<br>
+{t:&#39;ROUND 1 \u2014 COMENT\u00C1RIO&#39;, d:&#39;Cada coment\u00E1rio vale +1&#39;},<br>
+{t:&#39;ROUND 2 \u2014 SEGUIR / COMP.&#39;, d:&#39;Cada seguir ou compartilhar vale +5&#39;},<br>
+{t:&#39;ROUND 3 \u2014 PRESENTE&#39;, d:&#39;Cada presente vale +10. Reta final!&#39;}<br>
+];<br>
+function el(id){return document.getElementById(id);}<br>
+function setText(id, v){var n=el(id); if(n) n.textContent=v;}<br>
+function fmt(s){var m=Math.floor(s/60), sec=s%60; return (m<10?'0'+m:m)+':'+(sec<10?'0'+sec:sec);}<br>
+function face(d){if(d===0)return '\uD83D\uDE24'; if(d<5)return '\uD83D\uDE13'; if(d<10)return '\uD83E\uDD15'; if(d<15)return '\uD83E\uDD74'; return '\uD83D\uDE35\u200D\uD83D\uDCAB';}<br>
+function label(d){if(d===0)return 'Limpo'; if(d<5)return 'Leve \u2022 Olho roxo'; if(d<10)return 'M\u00E9dio \u2022 Curativo'; if(d<15)return 'Pesado \u2022 Cambaleando'; return 'CR\u00CDTICO \u2022 Detonado';}<br>
 function update(){<br>
-document.getElementById('scoreRed').textContent=red;<br>
-document.getElementById('scoreBlue').textContent=blue;<br>
-document.getElementById('time').textContent=fmt(timeLeft);<br>
-let total=red+blue||1, pr= red===0&&blue===0?50:Math.round(red/total*100), pb=100-pr;<br>
-document.getElementById('pctRed').textContent=pr+'%';<br>
-document.getElementById('pctBlue').textContent=pb+'%';<br>
-document.getElementById('progressBar').style.width=pr+'%';<br>
-let lifeR=Math.max(0,100-dmgRed*5), lifeB=Math.max(0,100-dmgBlue*5);<br>
-document.getElementById('faceRed').textContent=face(dmgRed);<br>
-document.getElementById('faceBlue').textContent=face(dmgBlue);<br>
-let lR=document.getElementById('lifeRed'), lB=document.getElementById('lifeBlue');<br>
-lR.style.width=lifeR+'%'; lB.style.width=lifeB+'%';<br>
-lR.style.background=lifeR>60?&#39;#22C55E&#39;:lifeR&gt;30?&#39;#FACC15&#39;:&#39;#EF4444&#39;;<br>
-lB.style.background=lifeB&gt;60?&#39;#22C55E&#39;:lifeB&gt;30?&#39;#FACC15&#39;:&#39;#EF4444&#39;;<br>
-document.getElementById(&#39;dmgRed&#39;).textContent=&#39;Vida &#39;+lifeR+&#39;% - &#39;+label(dmgRed);<br>
-document.getElementById(&#39;dmgBlue&#39;).textContent=&#39;Vida &#39;+lifeB+&#39;% - &#39;+label(dmgBlue);<br>
-document.getElementById(&#39;roundTitle&#39;).textContent=rounds[round-1].t;<br>
-document.getElementById(&#39;roundDesc&#39;).textContent=rounds[round-1].d;<br>
-document.getElementById(&#39;status&#39;).textContent=running?&#39;Batalha rolando...&#39;:(timeLeft=<mark>baseMin*60?&#39;Pronto para comecar&#39;:&#39;Pausado - &#39;+fmt(timeLeft));<br>
-document.getElementById(&#39;btnStart&#39;).textContent=running?&#39;⏸ PAUSAR&#39;:&#39;▶ INICIAR&#39;;<br>
-[&#39;r1&#39;,&#39;r2&#39;,&#39;r3&#39;].forEach((id,i)=&gt;{let b=document.getElementById(id); b.style.background=(i+1</mark>=round)?&#39;#fff&#39;:&#39;#2A2A44&#39;; b.style.color=(i+1=<mark>round)?&#39;#111&#39;:&#39;#ccc&#39;;});<br>
+try{<br>
+setText('scoreRed', red); setText('scoreBlue', blue); setText('time', fmt(timeLeft));<br>
+var total=red+blue||1; var pr=(red===0&&blue===0)?50:Math.round(red/total*100); var pb=100-pr;<br>
+setText('pctRed', pr+'%'); setText('pctBlue', pb+'%');<br>
+var pbEl=el('progressBar'); if(pbEl) pbEl.style.width=pr+'%';<br>
+var lifeR=Math.max(0,100-dmgRed*5), lifeB=Math.max(0,100-dmgBlue*5);<br>
+setText('faceRed', face(dmgRed)); setText('faceBlue', face(dmgBlue));<br>
+var lR=el('lifeRed'), lB=el('lifeBlue');<br>
+if(lR){lR.style.width=lifeR+'%'; lR.style.background=lifeR>60?&#39;#22C55E&#39;:lifeR&gt;30?&#39;#FACC15&#39;:&#39;#EF4444&#39;;}<br>
+if(lB){lB.style.width=lifeB+&#39;%&#39;; lB.style.background=lifeB&gt;60?&#39;#22C55E&#39;:lifeB&gt;30?&#39;#FACC15&#39;:&#39;#EF4444&#39;;}<br>
+setText(&#39;dmgRed&#39;,&#39;Vida &#39;+lifeR+&#39;% \u2022 &#39;+label(dmgRed));<br>
+setText(&#39;dmgBlue&#39;,&#39;Vida &#39;+lifeB+&#39;% \u2022 &#39;+label(dmgBlue));<br>
+setText(&#39;roundTitle&#39;, rounds[round-1].t);<br>
+setText(&#39;roundDesc&#39;, rounds[round-1].d);<br>
+setText(&#39;status&#39;, running?&#39;Batalha rolando...&#39;:(timeLeft=<mark>baseMin*60?&#39;Pronto para come\u00E7ar&#39;:&#39;Pausado \u2022 &#39;+fmt(timeLeft)));<br>
+setText(&#39;btnStart&#39;, running?&#39;\u23F8 PAUSAR&#39;:&#39;\u25B6 INICIAR&#39;);<br>
+[&#39;r1&#39;,&#39;r2&#39;,&#39;r3&#39;].forEach(function(id,i){var b=el(id); if(!b) return; var active=(i+1</mark>=round); b.style.background=active?&#39;#fff&#39;:&#39;#23233A&#39;; b.style.color=active?&#39;#111&#39;:&#39;#ccc&#39;;});<br>
+}catch(e){/* nunca trava a tela <em>/}<br>
 }<br>
-function add(team,pts){let dmg=pts</mark>=1?1:pts=<mark>5?3:5; if(team</mark>=&#39;red&#39;){red+=pts;dmgBlue+=dmg}else{blue+=pts;dmgRed+=dmg} feedCount++; document.getElementById(&#39;feedCount&#39;).textContent=feedCount+&#39; PONTOS&#39;; document.getElementById(&#39;feedText&#39;).textContent=(team=<mark>&#39;red&#39;?&#39;VERMELHO&#39;:&#39;AZUL&#39;)+&#39; +&#39;+pts+&#39; - Dano no adversario +&#39;+dmg; update();}<br>
-function setRound(n){round=n;update()}<br>
-function nextRound(){round=round<3?round+1:1;update()}<br>
-function setMin(m,el){baseMin=m;timeLeft=m*60;clearInterval(timer);running=false;update()}<br>
-function toggleTimer(){if(running){clearInterval(timer);running=false}else{if(timeLeft<=0)timeLeft=baseMin*60; timer=setInterval(()=>{if(timeLeft&gt;0){timeLeft--;update(); if(timeLeft</mark>=0){clearInterval(timer);running=false;update();showWinner();}}},1000); running=true} update()}<br>
-function addMin(){timeLeft+=60;update()}<br>
-function zeroTime(){clearInterval(timer);running=false;timeLeft=baseMin<em>60;update();document.getElementById(&#39;feedText&#39;).textContent=&#39;Tempo zerado para &#39;+fmt(timeLeft)+&#39; - Placar e dano mantidos&#39;}<br>
-function resetAll(){red=0;blue=0;dmgRed=0;dmgBlue=0;feedCount=0;round=1;timeLeft=baseMin</em>60;clearInterval(timer);running=false;document.getElementById(&#39;feedCount&#39;).textContent=&#39;NENHUM PONTO AINDA&#39;;document.getElementById(&#39;feedText&#39;).textContent=&#39;Toque em +1, +5 ou +10 conforme o chat participar.&#39;;update()}<br>
-function showWinner(){let w=red=<mark>blue?null:(red&gt;blue?&#39;red&#39;:&#39;blue&#39;); document.getElementById(&#39;winTitle&#39;).textContent=w</mark>=null?&#39;EMPATE! DESEMPATE?&#39;:(w=<mark>&#39;red&#39;?&#39;VERMELHO VENCEU!&#39;:&#39;AZUL VENCEU!&#39;); document.getElementById(&#39;winScore&#39;).textContent=red+&#39; X &#39;+blue; document.getElementById(&#39;winDetail&#39;).textContent=&#39;Vermelho &#39;+Math.round(red/((red+blue)||1)<em>100)+&#39;% - Azul &#39;+Math.round(blue/((red+blue)||1)</em>100)+&#39;%&#39;; document.getElementById(&#39;overlay&#39;).style.display=&#39;flex&#39;}<br>
-function closeOverlay(){document.getElementById(&#39;overlay&#39;).style.display=&#39;none&#39;}<br>
+function add(team, pts){<br>
+var dmg=(pts=<mark>1?1:pts</mark>=5?3:5);<br>
+if(team=<mark>&#39;red&#39;){red+=pts; dmgBlue+=dmg;} else {blue+=pts; dmgRed+=dmg;}<br>
+feedCount++;<br>
+setText(&#39;feedCount&#39;, feedCount+&#39; PONTOS&#39;);<br>
+setText(&#39;feedText&#39;, (team</mark>=&#39;red&#39;?&#39;VERMELHO&#39;:&#39;AZUL&#39;)+&#39; +&#39;+pts+&#39; \u2022 Dano +&#39;+dmg);<br>
+if(navigator.vibrate){try{navigator.vibrate(10);}catch(e){}}<br>
 update();<br>
+}<br>
+function setRound(n){round=n; update();}<br>
+function nextRound(){round=round&lt;3?round+1:1; update();}<br>
+function setMin(m){baseMin=m; timeLeft=m</em>60; if(timer) clearInterval(timer); running=false; update();}<br>
+function toggleTimer(){<br>
+if(running){if(timer) clearInterval(timer); running=false;}<br>
+else{<br>
+if(timeLeft&lt;=0) timeLeft=baseMin<em>60;<br>
+if(timer) clearInterval(timer);<br>
+timer=setInterval(function(){if(timeLeft&gt;0){timeLeft--; update(); if(timeLeft===0){clearInterval(timer); running=false; update(); showWinner();}}},1000);<br>
+running=true;<br>
+}<br>
+update();<br>
+}<br>
+function addMin(){timeLeft+=60; update();}<br>
+function zeroTime(){if(timer) clearInterval(timer); running=false; timeLeft=baseMin</em>60; update(); setText(&#39;feedText&#39;,&#39;Tempo zerado \u2022 Placar mantido&#39;);}<br>
+function resetAll(){red=0;blue=0;dmgRed=0;dmgBlue=0;feedCount=0;round=1;timeLeft=baseMin<em>60;if(timer) clearInterval(timer);running=false;setText(&#39;feedCount&#39;,&#39;NENHUM PONTO AINDA&#39;);setText(&#39;feedText&#39;,&#39;Toque em +1, +5 ou +10 conforme o chat participar.&#39;);update();}<br>
+function showWinner(){var w=(red=<mark>blue)?null:(red&gt;blue?&#39;red&#39;:&#39;blue&#39;); setText(&#39;winTitle&#39;, w</mark>=null?&#39;EMPATE!&#39;:(w===&#39;red&#39;?&#39;VERMELHO VENCEU!&#39;:&#39;AZUL VENCEU!&#39;)); setText(&#39;winScore&#39;, red+&#39; X &#39;+blue); setText(&#39;winDetail&#39;,&#39;Vermelho &#39;+Math.round(red/((red+blue)||1)</em>100)+&#39;% \u2022 Azul &#39;+Math.round(blue/((red+blue)||1)<em>100)+&#39;%&#39;); var o=el(&#39;overlay&#39;); if(o) o.style.display=&#39;flex&#39;;}<br>
+function closeOverlay(){var o=el(&#39;overlay&#39;); if(o) o.style.display=&#39;none&#39;;}<br>
+function bind(){<br>
+var b;<br>
+b=el(&#39;btnStart&#39;); if(b) b.addEventListener(&#39;click&#39;, toggleTimer);<br>
+b=el(&#39;btnAddMin&#39;); if(b) b.addEventListener(&#39;click&#39;, addMin);<br>
+b=el(&#39;btnZero&#39;); if(b) b.addEventListener(&#39;click&#39;, zeroTime);<br>
+b=el(&#39;btnReset&#39;); if(b) b.addEventListener(&#39;click&#39;, resetAll);<br>
+b=el(&#39;btnNext&#39;); if(b) b.addEventListener(&#39;click&#39;, nextRound);<br>
+b=el(&#39;btnWinner&#39;); if(b) b.addEventListener(&#39;click&#39;, showWinner);<br>
+b=el(&#39;btnNewBattle&#39;); if(b) b.addEventListener(&#39;click&#39;, function(){closeOverlay(); resetAll();});<br>
+b=el(&#39;btnClose&#39;); if(b) b.addEventListener(&#39;click&#39;, closeOverlay);<br>
+document.querySelectorAll(&#39;[data-min]&#39;).forEach(function(btn){btn.addEventListener(&#39;click&#39;, function(){setMin(parseInt(btn.getAttribute(&#39;data-min&#39;),10));});});<br>
+document.querySelectorAll(&#39;[data-add]&#39;).forEach(function(btn){btn.addEventListener(&#39;click&#39;, function(){var parts=btn.getAttribute(&#39;data-add&#39;).split(&#39;-&#39;); add(parts[0], parseInt(parts[1],10));});});<br>
+document.querySelectorAll(&#39;[data-round]&#39;).forEach(function(btn){btn.addEventListener(&#39;click&#39;, function(){setRound(parseInt(btn.getAttribute(&#39;data-round&#39;),10));});});<br>
+}<br>
+if(document.readyState===&#39;loading&#39;){document.addEventListener(&#39;DOMContentLoaded&#39;, function(){bind(); update();});} else {bind(); update();}<br>
+window.__batalha={add:add, setRound:setRound, toggleTimer:toggleTimer, resetAll:resetAll, update:update};<br>
+})();<br>
 </script><br>
-<script>(function(){var loc=location.href.replace(/#.*$/,&quot;<q>);var ATTR_NAMES=[</q>data-product-id<q>,</q>data-productid<q>,</q>data-product<u>id<q>,</q>product-id<q>,</q>productid<q>,</q>product</u>id<q>,</q>data-source-entity-id<q>,</q>source-entity-id<q>,</q>source<u>entity</u>id<q>,</q>data-product<q>,</q>data-metadata<q>,</q>data-meta<q>];var DATASET_KEYS=[</q>productId<q>,</q>productid<q>,</q>product<u>id<q>,</q>sourceEntityId<q>,</q>sourceentityid<q>,</q>source</u>entity_id<q>,</q>product<q>,</q>metadata<q>,</q>meta&quot;];function readProductId(value){if(typeof value!</mark><q>string</q>||value.length=<mark>0)return null;if(/<sup>[0-9]{6,}$/.test(value))return</sup> value;var match=value.match(/(?:product(?:<u>|-)?id|source(?:</u>|-)?entity(?:_|-)?id)[&quot;&#39;=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&amp;&amp;node!</mark>document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS<u>TYPE=<q>ecto:artifact-focus-request</q>;var CLOSE</u>TYPE=<q>ecto:artifact-close-request</q>;function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute(<q>tabindex</q>))body.setAttribute(<q>tabindex</q>,<q>-1</q>);try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener(<q>message</q>,function(event){if(event.source!<mark>window.parent)return;var data=event.data;if(!data||typeof data!</mark><q>object</q>||data.type!<mark>FOCUS_TYPE)return;if(document.readyState</mark>=<q>loading</q>){document.addEventListener(<q>DOMContentLoaded</q>,focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener(<q>keydown</q>,function(event){if(event.key!==<q>Escape</q>)return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},<q>*</q>);},0);});})();</script></p>
+<script>(function(){var loc=location.href.replace(/#.</em>\(/,&quot;&quot;);var ATTR_NAMES=[&quot;data-product-id&quot;,&quot;data-productid&quot;,&quot;data-product_id&quot;,&quot;product-id&quot;,&quot;productid&quot;,&quot;product_id&quot;,&quot;data-source-entity-id&quot;,&quot;source-entity-id&quot;,&quot;source_entity_id&quot;,&quot;data-product&quot;,&quot;data-metadata&quot;,&quot;data-meta&quot;];var DATASET_KEYS=[&quot;productId&quot;,&quot;productid&quot;,&quot;product_id&quot;,&quot;sourceEntityId&quot;,&quot;sourceentityid&quot;,&quot;source_entity_id&quot;,&quot;product&quot;,&quot;metadata&quot;,&quot;meta&quot;];function readProductId(value){if(typeof value!==&quot;string&quot;||value.length===0)return null;if(/^[0-9]{6,}\)/.test(value))return value;var match=value.match(/(?:product(?:<u>|-)?id|source(?:</u>|-)?entity(?:<u>|-)?id)[&quot;&#39;=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&amp;&amp;node!==document.body;node=node.parentElement){for(var i=0;i&lt;ATTR</u>NAMES.length;i++){var attrValue=node.getAttribute&amp;&amp;node.getAttribute(ATTR<u>NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j&lt;DATASET</u>KEYS.length;j++){var dataValue=dataset[DATASET<u>KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&amp;&amp;node.getAttribute&amp;&amp;node.getAttribute(<q>data-clippy-inline-media-slot</q>)!<mark>null)}function findInlineMediaSlot(start){for(var node=start;node&amp;&amp;node!</mark>document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&amp;&amp;((node.getAttribute(<q>data-clippy-inline-media-url</q>)||node.getAttribute(<q>data-url</q>)||node.getAttribute(&quot;data</u>url<q>)))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,</q><q>)}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)=<mark>stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)</mark>=stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!==</q>https:<q>)return false;var host=url.hostname.toLowerCase();var supported=host===</q>instagram.com<q>||host.endsWith(</q>.instagram.com<q>)||host===</q>facebook.com<q>||host.endsWith(</q>.facebook.com<q>);return supported&amp;&amp;/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&amp;&amp;node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute(</q>data-href<q>)||node.getAttribute(</q>data-url<q>);if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!<mark>window&amp;&amp;typeof url</mark>=</q>string<q>&amp;&amp;/<sup>https?:\/\//.test(url)){parent.postMessage({type:</sup></q>ecto:usercontent-link-click<q>,href:url},</q><em><q>);return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener(</q>click<q>,function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest(</q>a[href]&quot;):null;if(a&amp;&amp;a.href&amp;&amp;/<sup>https?:\/\//.test(a.href)&amp;&amp;a.href.replace(/#.</sup></em>\(/,&quot;&quot;)!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:&quot;ecto-artifact-link-click&quot;,productId:productId},&quot;*&quot;);return}e.preventDefault();parent.postMessage({type:&quot;ecto:usercontent-link-click&quot;,href:a.href},&quot;*&quot;);return}var dataHref=findDataHref(target);if(dataHref&amp;&amp;/^https?:\/\//.test(dataHref.href)&amp;&amp;dataHref.href.replace(/#.*\)/,&quot;<q>)!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:</q>ecto:usercontent-link-click<q>,href:dataHref.href},</q><em><q>)}},true)})();</script><script>(function(){var FOCUS_TYPE=</q>ecto:artifact-focus-request<q>;var CLOSE_TYPE=</q>ecto:artifact-close-request<q>;function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute(</q>tabindex<q>))body.setAttribute(</q>tabindex<q>,</q>-1<q>);try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener(</q>message<q>,function(event){if(event.source!<mark>window.parent)return;var data=event.data;if(!data||typeof data!</mark></q>object<q>||data.type!<mark>FOCUS_TYPE)return;if(document.readyState</mark>=</q>loading<q>){document.addEventListener(</q>DOMContentLoaded<q>,focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener(</q>keydown<q>,function(event){if(event.key!==</q>Escape<q>)return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},</q></em>&quot;);},0);});})();</script></p>
 
 <p></body></html></p>
 <script>window.webkit.messageHandlers.TextLoaded.postMessage('TextLoaded')</script></body></html>
