@@ -1,0 +1,298 @@
+<html lang="pt-BR"><head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Controle de Gastos - 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+body{background:#E8F5E9;color:#0F5132}
+.wrap{max-width:430px;margin:0 auto;min-height:100vh;background:#E8F5E9;padding-bottom:40px}
+header{background:#0F5132;color:white;padding:18px 14px 14px;text-align:center}
+header h1{font-size:19px}
+header p{font-size:12px;opacity:.9;margin-top:6px}
+.backup{display:flex;gap:8px;padding:10px 12px;background:#0F5132}
+.backup button{flex:1;background:white;color:#0F5132;border:0;padding:11px;border-radius:12px;font-weight:800;cursor:pointer}
+.tabs{display:flex;background:#1E7A46;padding:8px;gap:6px;position:sticky;top:0;z-index:10}
+.tabs button{flex:1;border:0;padding:12px 6px;border-radius:10px;background:transparent;color:white;font-weight:700;cursor:pointer;font-size:13px}
+.tabs button.active{background:white;color:#0F5132}
+.card{background:white;margin:12px;border-radius:16px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+label{font-size:13px;font-weight:700;display:block;margin:12px 0 6px}
+input,select{width:100%;padding:13px;border:1.5px solid #D9EADF;border-radius:12px;font-size:15px;outline:none;background:white;color:#0F5132}
+input:focus,select:focus{border-color:#1E7A46}
+.hint{font-size:12px;color:#666;margin-top:4px;line-height:1.4}
+.row{display:flex;gap:8px}
+.row>div{flex:1}
+.btn{width:100%;background:#1E7A46;color:white;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;margin-top:14px}
+.btn2{background:#E8F5E9;color:#0F5132}
+.btn-danger{background:#D32F2F}
+.chip{display:inline-block;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:800;background:#E8F5E9;color:#0F5132}
+.chip.fixa{background:#FFF3CD;color:#7A5A00}
+.item{background:#F8FCF9;border:1px solid #E6F2E9;border-radius:14px;padding:12px;margin-top:10px}
+.item-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.item b{font-size:14px}
+.item small{color:#666}
+.val{font-weight:900;font-size:15px}
+.val.in{color:#1E7A46}.val.out{color:#D32F2F}
+.actions{display:flex;gap:8px;margin-top:10px}
+.actions button{flex:1;padding:9px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+.actions .edit{background:#E8F5E9;color:#0F5132}
+.actions .del{background:#FDECEA;color:#D32F2F}
+.month-nav{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.month-nav button{width:44px;height:44px;border-radius:50%;border:0;background:white;font-size:20px;cursor:pointer}
+.totals{display:flex;gap:8px;margin-top:12px}
+.totals div{flex:1;background:#E8F5E9;border-radius:12px;padding:10px;text-align:center}
+.totals div b{font-size:15px;display:block}
+.bar-wrap{display:flex;gap:14px;align-items:flex-end;height:140px;justify-content:center;margin:16px 0 8px}
+.bar-col{text-align:center;width:110px}
+.bar-box{height:120px;display:flex;align-items:flex-end;justify-content:center;background:#F0F7F1;border-radius:12px;overflow:hidden}
+.bar{width:100%}
+.bar.in{background:#1E7A46}.bar.out{background:#D32F2F}
+.meta-bar{height:14px;background:#E8EFEA;border-radius:20px;overflow:hidden;margin:8px 0}
+.meta-fill{height:100%;background:#1E7A46}
+.cat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #EEE;font-size:13px}
+.empty{text-align:center;color:#777;padding:18px;font-size:14px;line-height:1.5}
+.hidden{display:none}
+.toggle{display:flex;gap:8px;margin-top:8px}
+.toggle button{flex:1;padding:11px;border-radius:10px;border:0;font-weight:800;cursor:pointer;background:#E8F5E9;color:#0F5132}
+.toggle button.active{background:#0F5132;color:white}
+.check{display:flex;gap:8px;align-items:center;margin-top:12px;font-size:13px;font-weight:600}
+.check input{width:20px;height:20px}
+.howto{background:#FFF8E1;border:1px solid #FFE082;border-radius:12px;padding:12px;margin-top:12px;font-size:13px;line-height:1.6}
+.howto b{color:#0F5132}
+details{margin-top:10px}
+summary{font-weight:800;cursor:pointer;color:#0F5132;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Controle de Gastos - 2026</h1><p>Salvo automaticamente no seu celular - sem login e sem senha.</p></header>
+<div class="backup">
+<button onclick="exportar()">Exportar Backup</button>
+<button onclick="document.getElementById('file').click()">Importar Backup</button>
+<input type="file" id="file" accept=".json" style="display:none" onchange="importar(event)">
+</div>
+<div class="tabs">
+<button id="tab1" class="active" onclick="showTab('dia')">Dia a Dia</button>
+<button id="tab2" onclick="showTab('controle')">Controle de Gastos</button>
+<button id="tab3" onclick="showTab('contas')">Contas</button>
+</div>
+
+<!-- DIA A DIA -->
+<div id="page-dia">
+<div class="card">
+<details><summary>Como usar o Dia a Dia? Clique aqui</summary><div class="howto"><b>1. DIA A DIA - Onde lanca tudo</b><br>E a parte que a pessoa usa todo dia.<br>1. Clica em + Novo Lancamento<br>2. Bota o nome: ex: Mercado ou Salario<br>3. Bota o valor: 300 - ele ja vira R$ 300,00 sozinho<br>4. Escolhe o tipo: Entrada (dinheiro que entrou) ou Saida (dinheiro que saiu)<br>5. Escolhe a categoria: Alimentacao, Transporte, Casa, Lazer, Salario...<br>6. Data ja vem de hoje sozinha, se quiser muda<br>7. Clica em Salvar<br><br><b>Pra explicar:</b> "Aqui tu lanca tudo que tu ganha e gasta no dia. E igual caderninho, so que no celular."<br><br><b>Editar:</b> Se digitou errado, clica em Editar, corrige so o valor e salva. Nao precisa apagar.<br><b>Repetir:</b> Se e um gasto todo mes, marca "Repetir todo mes" e bota quantos meses, ex: 12. Ele cria sozinho.</div></details>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><b id="mesLabelDia">Mes atual: Novembro 2026</b><span id="countDia" class="chip">0 lancamentos</span></div>
+<div class="row" style="margin-top:12px"><button onclick="changeMonth(-1)" style="flex:1;padding:10px;border-radius:10px;border:0;background:#E8F5E9;font-weight:800">Mes anterior</button><button onclick="changeMonth(1)" style="flex:1;padding:10px;border-radius:10px;border:0;background:#0F5132;color:white;font-weight:800">Proximo mes</button></div>
+<label>Data</label><input type="date" id="f-data">
+<div class="row" style="margin-top:10px"><button onclick="setHoje()" style="flex:1;padding:10px;border-radius:10px;border:0;background:#E8F5E9;font-weight:800">Hoje</button><button onclick="setOntem()" style="flex:1;padding:10px;border-radius:10px;border:0;background:white;border:1.5px solid #D9EADF;font-weight:800">Ontem</button></div>
+<p class="hint">Ja vem com a data de hoje (horario de Brasilia). Se deixar em branco ou invalida, salva com a data de hoje.</p>
+<label>O que foi</label><input id="f-nome" placeholder="Ex.: Salario, Mercado">
+<label>Categoria *</label><select id="f-cat"><option value="">Escolha a categoria</option><option>Alimentacao</option><option>Transporte</option><option>Casa</option><option>Lazer</option><option>Saude</option><option>Salario</option><option>Pix</option><option>Cartao</option><option>Outros</option></select><p class="hint">Obrigatoria - aparece como selo colorido na lista.</p>
+<div class="row"><div><label>Entrou (R$)</label><input id="f-entrou" inputmode="decimal" placeholder="Ex.: 2000"></div><div><label>Saiu (R$)</label><input id="f-saiu" inputmode="decimal" placeholder="Ex.: 150"></div></div>
+<p class="hint">Preencha so um dos dois: se entrou dinheiro, bota em Entrou. Se saiu, bota em Saiu. Se botar os dois, ele cria 2 lancamentos.</p>
+<label class="check"><input type="checkbox" id="f-repetir"> Repetir todo mes?</label>
+<div id="repBox" class="hidden"><label>Repetir por quantos meses?</label><input id="f-repMeses" type="number" value="12" min="1" max="24"></div>
+<button class="btn" id="btnSalvar" onclick="salvar()">+ Adicionar Lancamento</button>
+<button class="btn btn2 hidden" id="btnCancelar" onclick="cancelarEdit()">Cancelar edicao</button>
+</div>
+<div class="card"><label style="margin-top:0">Pesquisar</label><input id="buscaDia" oninput="render()" placeholder="Pesquisar... Ex: Mercado"><div id="listaDia"><div class="empty">Nenhum lancamento ainda<br>Clique em + para adicionar seu primeiro gasto</div></div></div>
+</div>
+
+<!-- CONTROLE -->
+<div id="page-controle" class="hidden">
+<div class="card">
+<details><summary>Como usar o Controle? Clique aqui</summary><div class="howto"><b>2. CONTROLE DE GASTOS - Onde tu ve o mes</b><br>E onde a pessoa ve se ta gastando muito.<br>1. No topo tem Mes anterior / Proximo mes - clica pra trocar o mes<br>2. Em cima mostra 3 caixas: Total Entradas, Total Gastos, Saldo<br>3. Embaixo tem o Grafico: barra verde e o que entrou, barra vermelha e o que saiu<br>4. Embaixo tem Onde foi o dinheiro: mostra por categoria, ex: Alimentacao R$ 500,00, Transporte R$ 200,00<br>5. Tem a Lupa pra pesquisar um gasto, ex: digita "Mercado" e acha na hora<br>6. Tem o Filtro por categoria pra ver so Alimentacao, por exemplo<br><br><b>Meta do mes:</b><br>1. Bota no campo Meta do mes: R$ 2.000 e salva<br>2. Aparece a barra: "Tu gastou R$ 1.500 de R$ 2.000"<br>3. Verde = ta de boa, Amarelo = passou de 70%, Vermelho = estourou a meta<br>4. Mostra "Falta R$ 500" ou "Passou R$ 200"<br><br><b>Pra explicar:</b> "Aqui tu ve se o mes foi bom ou ruim. Se a barra vermelha tiver maior que a verde, tu gastou mais do que ganhou."</div></details>
+<div class="month-nav" style="margin-top:12px"><button onclick="changeMonth(-1)">‹</button><div style="text-align:center"><small>MES ATUAL</small><br><b id="mesLabelControle">Novembro 2026</b></div><button onclick="changeMonth(1)">›</button></div>
+<div class="totals"><div><small>Total Entradas</small><b id="totIn" style="color:#1E7A46">R$&nbsp;0,00</b></div><div><small>Total Gastos</small><b id="totOut" style="color:#D32F2F">R$&nbsp;0,00</b></div><div><small>Saldo</small><b id="totSaldo" style="color: rgb(30, 122, 70);">R$&nbsp;0,00</b></div></div>
+<label>Pesquisar gasto (lupa)</label><input id="buscaControle" oninput="render()" placeholder="Pesquisar... Ex: Mercado">
+</div>
+<div class="card"><b>Grafico do mes</b><div id="grafico"><div class="empty">Sem lancamentos neste mes<br>Adicione um gasto no Dia a Dia para ver o grafico</div></div></div>
+<div class="card"><b>Meta do mes</b><label>Meta do mes (R$)</label><div class="row"><input id="metaInput" inputmode="decimal" placeholder="Ex: 2000"><button onclick="salvarMeta()" style="padding:12px 16px;border:0;background:#0F5132;color:white;border-radius:12px;font-weight:800;cursor:pointer">Salvar</button></div><div id="metaInfo"><p class="hint">Bote sua meta para acompanhar o mes.</p></div><div class="meta-bar"><div id="metaFill" class="meta-fill" style="width: 0%; background: rgb(30, 122, 70);"></div></div></div>
+<div class="card"><b>Onde foi o dinheiro</b><div id="porCat"><div class="empty">Nenhum gasto neste mes</div></div><label>Filtrar por categoria</label><select id="filtroCat" onchange="render()"><option value="">Todas as categorias</option><option>Alimentacao</option><option>Transporte</option><option>Casa</option><option>Lazer</option><option>Saude</option><option>Salario</option><option>Pix</option><option>Cartao</option><option>Outros</option></select></div>
+<div class="card"><b>Todos os meses</b><div id="todosMeses"><div class="empty">Nenhum mes com lancamento</div></div></div>
+</div>
+
+<!-- CONTAS -->
+<div id="page-contas" class="hidden">
+<div class="card">
+<details><summary>Como usar Contas? Clique aqui</summary><div class="howto"><b>3. CONTAS - Onde controla o que tem pra pagar</b><br>E pra nao esquecer conta e nao pagar juros.<br>1. Clica em + Nova Conta<br>2. Bota nome: Aluguel, Internet, Cartao<br>3. Bota valor total: ex: 1.200<br>4. Bota quantas parcelas: ex: 12 - ele ja calcula a parcela sozinho, R$ 100,00 por mes<br>5. Bota quantas ja pagou: ex: 2 - ele ja mostra "Falta R$ 1.000"<br>6. Bota vencimento: ex: dia 10<br>7. Escolhe categoria: Casa, Cartao, Internet...<br><br><b>Conta fixa:</b> Se e Aluguel ou Internet que e todo mes, marca "E conta fixa todo mes?" e bota 12 meses. Ele ja cria pros proximos 12 meses sozinho, com vencimento certinho. Aparece com selo FIXA.<br><br><b>Pra explicar:</b> "Aqui tu bota tudo que tu tem pra pagar parcelado ou todo mes. Ele te mostra quanto ja pagou e quanto ainda falta."</div></details>
+<b style="display:block;margin-top:12px">Nova conta</b>
+<label>Nome da conta</label><input id="c-nome" placeholder="Ex.: Aluguel, Internet, Cartao">
+<label>Categoria</label><select id="c-cat"><option>Casa</option><option>Cartao</option><option>Internet</option><option>Celular</option><option>Aluguel</option><option>Outros</option></select>
+<div class="row"><div><label>Valor total (R$)</label><input id="c-valor" inputmode="decimal" placeholder="Ex: 1200"></div><div><label>Parcelas</label><input id="c-parcelas" type="number" value="1" min="1"></div></div>
+<div class="row"><div><label>Ja pagou (parcelas)</label><input id="c-pagas" type="number" value="0" min="0"></div><div><label>Vencimento</label><input id="c-venc" type="date"></div></div>
+<label class="check"><input type="checkbox" id="c-fixa"> E conta fixa todo mes? Ex: Aluguel, Internet</label>
+<div id="fixaBox" class="hidden"><label>Repetir por quantos meses?</label><input id="c-rep" type="number" value="12" min="1" max="24"></div>
+<button class="btn" onclick="salvarConta()">+ Adicionar Conta</button>
+</div>
+<div class="card"><input id="buscaConta" oninput="render()" placeholder="Pesquisar conta..."><div id="listaContas"><div class="empty">Nenhuma conta ainda</div></div></div>
+<div class="card"><details><summary>Como usar o Backup? Clique aqui</summary><div class="howto"><b>4. BACKUP - Pra nao perder nada</b><br>1. Clica em Exportar Backup no topo<br>2. Baixa um arquivo no celular<br>3. Salva no Drive ou manda pra tu mesmo no WhatsApp<br>4. Se trocar de celular, clica em Importar Backup, escolhe o arquivo e volta tudo<br><br><b>Pra explicar:</b> "E o teu seguro. Se tu trocar de celular, tu nao perde nada, e so importar."</div></details><button class="btn btn-danger" onclick="limparTudo()" style="margin-top:12px">Limpar tudo</button><p class="hint" style="text-align:center">Apaga todos os dados deste celular.</p></div>
+</div>
+
+</div>
+<script>
+var lanc = JSON.parse(localStorage.getItem('cg_lancamentos')||'[]');
+var contas = JSON.parse(localStorage.getItem('cg_contas')||'[]');
+var metas = JSON.parse(localStorage.getItem('cg_metas')||'{}');
+var editId=null;
+var hoje = new Date();
+var ano = hoje.getFullYear(), mes = hoje.getMonth();
+var meses=['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+function fmt(v){return (Number(v)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function parseVal(s){if(!s) return 0; s=String(s).replace('R$','').trim(); if(s.indexOf(',')>-1 && s.indexOf('.')>-1){s=s.replace(/\./g,'').replace(',','.')} else if(s.indexOf(',')>-1){s=s.replace(',','.')} return parseFloat(s)||0}
+function saveAll(){localStorage.setItem('cg_lancamentos',JSON.stringify(lanc));localStorage.setItem('cg_contas',JSON.stringify(contas));localStorage.setItem('cg_metas',JSON.stringify(metas));}
+function hojeISO(){var d=new Date();return d.toISOString().slice(0,10)}
+function setHoje(){document.getElementById('f-data').value=hojeISO()}
+function setOntem(){var d=new Date();d.setDate(d.getDate()-1);document.getElementById('f-data').value=d.toISOString().slice(0,10)}
+function showTab(t){
+['dia','controle','contas'].forEach(function(x){document.getElementById('page-'+x).classList.toggle('hidden',x!==t)});
+document.getElementById('tab1').className=t==='dia'?'active':'';document.getElementById('tab2').className=t==='controle'?'active':'';document.getElementById('tab3').className=t==='contas'?'active':'';
+render();
+}
+function changeMonth(d){mes+=d; if(mes<0){mes=11;ano--} if(mes>11){mes=0;ano++} render()}
+function monthKey(y,m){return y+'-'+String(m+1).padStart(2,'0')}
+function inMonth(dateStr){if(!dateStr) return false; var dt=new Date(dateStr+'T12:00:00'); return dt.getFullYear()===ano && dt.getMonth()===mes}
+document.getElementById('f-repetir').addEventListener('change',function(e){document.getElementById('repBox').classList.toggle('hidden',!e.target.checked)});
+document.getElementById('c-fixa').addEventListener('change',function(e){document.getElementById('fixaBox').classList.toggle('hidden',!e.target.checked)});
+function salvar(){
+var nome=document.getElementById('f-nome').value.trim();
+var cat=document.getElementById('f-cat').value;
+var entrou=parseVal(document.getElementById('f-entrou').value);
+var saiu=parseVal(document.getElementById('f-saiu').value);
+var data=document.getElementById('f-data').value||hojeISO();
+if(!nome){alert('Bote o nome: ex: Mercado');return}
+if(!cat){alert('Escolha a categoria');return}
+if((!entrou||entrou<=0) && (!saiu||saiu<=0)){alert('Bote um valor em Entrou ou em Saiu');return}
+if(editId){
+var it=lanc.find(function(x){return x.id===editId}); if(it){it.nome=nome;it.cat=cat;it.data=data; if(entrou>0){it.valor=entrou;it.tipo='entrada'} else {it.valor=saiu;it.tipo='saida'}}
+editId=null; document.getElementById('btnSalvar').textContent='+ Adicionar Lancamento'; document.getElementById('btnCancelar').classList.add('hidden');
+} else {
+var rep=document.getElementById('f-repetir').checked;
+var qtd=rep?(parseInt(document.getElementById('f-repMeses').value)||1):1;
+var itens=[];
+if(entrou>0) itens.push({valor:entrou,tipo:'entrada'});
+if(saiu>0) itens.push({valor:saiu,tipo:'saida'});
+itens.forEach(function(item){
+for(var i=0;i<qtd;i++){var d=new Date(data+'T12:00:00'); d.setMonth(d.getMonth()+i); lanc.push({id:Date.now()+'_'+i+'_'+item.tipo+'_'+Math.random().toString(36).slice(2),nome:nome,cat:cat,valor:item.valor,data:d.toISOString().slice(0,10),tipo:item.tipo});}
+});
+}
+saveAll(); document.getElementById('f-nome').value=''; document.getElementById('f-entrou').value=''; document.getElementById('f-saiu').value=''; document.getElementById('f-cat').value=''; document.getElementById('f-repetir').checked=false; document.getElementById('repBox').classList.add('hidden'); render();
+}
+function cancelarEdit(){editId=null; document.getElementById('btnSalvar').textContent='+ Adicionar Lancamento'; document.getElementById('btnCancelar').classList.add('hidden'); document.getElementById('f-nome').value='';document.getElementById('f-entrou').value='';document.getElementById('f-saiu').value=''}
+function editar(id){var it=lanc.find(function(x){return x.id===id}); if(!it) return; editId=id; document.getElementById('f-nome').value=it.nome; if(it.tipo==='entrada'){document.getElementById('f-entrou').value=it.valor;document.getElementById('f-saiu').value=''} else {document.getElementById('f-saiu').value=it.valor;document.getElementById('f-entrou').value=''} document.getElementById('f-cat').value=it.cat; document.getElementById('f-data').value=it.data; document.getElementById('btnSalvar').textContent='Salvar alteracao'; document.getElementById('btnCancelar').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'})}
+function excluir(id){if(!confirm('Excluir este lancamento?')) return; lanc=lanc.filter(function(x){return x.id!==id}); saveAll(); render()}
+function salvarConta(){
+var nome=document.getElementById('c-nome').value.trim();
+var cat=document.getElementById('c-cat').value;
+var valor=parseVal(document.getElementById('c-valor').value);
+var parcelas=parseInt(document.getElementById('c-parcelas').value)||1;
+var pagas=parseInt(document.getElementById('c-pagas').value)||0;
+var venc=document.getElementById('c-venc').value||hojeISO();
+if(!nome){alert('Bote o nome da conta');return}
+if(!valor||valor<=0){alert('Bote um valor maior que 0');return}
+if(parcelas<1){alert('Parcelas tem que ser no minimo 1');return}
+if(pagas>parcelas){alert('Ja pagou nao pode ser maior que parcelas');return}
+var fixa=document.getElementById('c-fixa').checked;
+var qtd=fixa?(parseInt(document.getElementById('c-rep').value)||1):1;
+for(var i=0;i<qtd;i++){var d=new Date(venc+'T12:00:00'); d.setMonth(d.getMonth()+i); contas.push({id:Date.now()+'_c'+i+'_'+Math.random().toString(36).slice(2),nome:nome,cat:cat,valor:valor,parcelas:parcelas,pagas:pagas,venc:d.toISOString().slice(0,10),fixa:fixa});}
+saveAll(); document.getElementById('c-nome').value=''; document.getElementById('c-valor').value=''; document.getElementById('c-fixa').checked=false; document.getElementById('fixaBox').classList.add('hidden'); render(); alert('Conta salva!');
+}
+function excluirConta(id){if(!confirm('Excluir esta conta?')) return; contas=contas.filter(function(x){return x.id!==id}); saveAll(); render()}
+function salvarMeta(){var v=parseVal(document.getElementById('metaInput').value); if(!v||v<=0){alert('Bote uma meta maior que 0');return} metas[monthKey(ano,mes)]=v; saveAll(); render()}
+function exportar(){var data={lancamentos:lanc,contas:contas,metas:metas,exportado:new Date().toISOString()}; var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='backup-controle-gastos.json'; a.click()}
+function importar(e){var f=e.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){try{var d=JSON.parse(r.result); if(!d.lancamentos && !d.contas){alert('Arquivo invalido');return} lanc=d.lancamentos||[]; contas=d.contas||[]; metas=d.metas||{}; saveAll(); render(); alert('Backup importado!')}catch(err){alert('Arquivo invalido')}}; r.readAsText(f)}
+function limparTudo(){if(!confirm('Apagar TUDO deste celular?')) return; lanc=[]; contas=[]; metas={}; saveAll(); render()}
+function render(){
+var key=monthKey(ano,mes);
+document.getElementById('mesLabelDia').textContent='Mes atual: '+meses[mes]+' '+ano;
+document.getElementById('mesLabelControle').textContent=meses[mes]+' '+ano;
+document.getElementById('metaInput').value=metas[key]||'';
+var busca=(document.getElementById('buscaDia').value||'').toLowerCase();
+var buscaC2=(document.getElementById('buscaControle').value||'').toLowerCase();
+var buscaFinal=busca||buscaC2;
+var lista=lanc.filter(function(x){return inMonth(x.data) && (!buscaFinal || x.nome.toLowerCase().indexOf(buscaFinal)>-1)});
+document.getElementById('countDia').textContent=lista.length+' lancamentos';
+var html='';
+if(lista.length===0) html='<div class="empty">Nenhum lancamento ainda<br>Clique em + para adicionar seu primeiro gasto</div>';
+else lista.slice().reverse().forEach(function(it){
+var d=new Date(it.data+'T12:00:00'); var label=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+html+='<div class="item"><div class="item-top"><div><b>'+it.nome+'</b><br><small>'+label+' - </small><span class="chip">'+it.cat+'</span></div><div class="val '+(it.tipo==='entrada'?'in':'out')+'">'+(it.tipo==='entrada'?'+':'-')+' '+fmt(it.valor)+'</div></div><div class="actions"><button class="edit" onclick="editar(\''+it.id+'\')">Editar</button><button class="del" onclick="excluir(\''+it.id+'\')">Excluir</button></div></div>';
+});
+document.getElementById('listaDia').innerHTML=html;
+var doMes=lanc.filter(function(x){return inMonth(x.data)});
+if(buscaC2) doMes=doMes.filter(function(x){return x.nome.toLowerCase().indexOf(buscaC2)>-1});
+var filtro=document.getElementById('filtroCat').value;
+if(filtro) doMes=doMes.filter(function(x){return x.cat===filtro});
+var totIn=doMes.filter(function(x){return x.tipo==='entrada'}).reduce(function(s,x){return s+Number(x.valor)},0);
+var totOut=doMes.filter(function(x){return x.tipo==='saida'}).reduce(function(s,x){return s+Number(x.valor)},0);
+document.getElementById('totIn').textContent=fmt(totIn);
+document.getElementById('totOut').textContent=fmt(totOut);
+document.getElementById('totSaldo').textContent=fmt(totIn-totOut);
+document.getElementById('totSaldo').style.color=totIn-totOut>=0?'#1E7A46':'#D32F2F';
+var g=document.getElementById('grafico');
+if(totIn===0 && totOut===0){g.innerHTML='<div class="empty">Sem lancamentos neste mes<br>Adicione um gasto no Dia a Dia para ver o grafico</div>'}
+else{
+var max=Math.max(totIn,totOut,1);
+var hIn=Math.max(8, totIn/max*120);
+var hOut=Math.max(8, totOut/max*120);
+g.innerHTML='<div style="display:flex;justify-content:space-between;font-weight:800"><span style="color:#1E7A46">'+fmt(totIn)+'</span><span style="color:#D32F2F">'+fmt(totOut)+'</span></div><div class="bar-wrap"><div class="bar-col"><div class="bar-box"><div class="bar in" style="height:'+hIn+'px"></div></div><small>Total Entradas</small></div><div class="bar-col"><div class="bar-box"><div class="bar out" style="height:'+hOut+'px"></div></div><small>Total Gastos</small></div></div>';
+}
+var meta=metas[key]||0;
+var metaInfo=document.getElementById('metaInfo');
+var fill=document.getElementById('metaFill');
+if(!meta){metaInfo.innerHTML='<p class="hint">Bote sua meta para acompanhar o mes.</p>'; fill.style.width='0%'; fill.style.background='#1E7A46'}
+else{
+var pct=Math.min(100, totOut/meta*100);
+fill.style.width=pct+'%';
+fill.style.background=pct<=70?'#1E7A46':pct<=100?'#F2C200':'#D32F2F';
+var falta=meta-totOut;
+metaInfo.innerHTML='<p style="font-size:13px;margin-top:8px">Voce gastou <b>'+fmt(totOut)+'</b> de <b>'+fmt(meta)+'</b> - '+pct.toFixed(0)+'%</p><p style="font-size:13px;font-weight:700;color:'+(falta>=0?'#1E7A46':'#D32F2F')+'">'+(falta>=0?'Falta '+fmt(falta)+' para atingir a meta':'Voce passou '+fmt(Math.abs(falta))+' da meta')+'</p>';
+}
+var cats={};
+doMes.filter(function(x){return x.tipo==='saida'}).forEach(function(x){cats[x.cat]=(cats[x.cat]||0)+Number(x.valor)});
+var catHtml='';
+if(Object.keys(cats).length===0) catHtml='<div class="empty">Nenhum gasto neste mes</div>';
+else Object.entries(cats).sort(function(a,b){return b[1]-a[1]}).forEach(function(e){catHtml+='<div class="cat-row"><span>'+e[0]+'</span><b>'+fmt(e[1])+'</b></div>'});
+document.getElementById('porCat').innerHTML=catHtml;
+var mesesMap={};
+lanc.forEach(function(x){var k=x.data.slice(0,7); if(!mesesMap[k]) mesesMap[k]={in:0,out:0}; if(x.tipo==='entrada') mesesMap[k].in+=Number(x.valor); else mesesMap[k].out+=Number(x.valor)});
+var tm='';
+if(Object.keys(mesesMap).length===0) tm='<div class="empty">Nenhum mes com lancamento</div>';
+else Object.entries(mesesMap).sort().reverse().forEach(function(e){tm+='<div class="cat-row"><span>'+e[0]+'</span><span>Entradas '+fmt(e[1].in)+' - Gastos '+fmt(e[1].out)+'</span></div>'});
+document.getElementById('todosMeses').innerHTML=tm;
+var buscaC=(document.getElementById('buscaConta').value||'').toLowerCase();
+var cl=contas.filter(function(x){return !buscaC||x.nome.toLowerCase().indexOf(buscaC)>-1});
+var ch='';
+if(cl.length===0) ch='<div class="empty">Nenhuma conta ainda</div>';
+else cl.slice().reverse().forEach(function(c){
+var parc=c.valor/c.parcelas;
+var falta=c.valor - parc*c.pagas;
+ch+='<div class="item"><div class="item-top"><div><b>'+c.nome+'</b><br><small>Vence '+new Date(c.venc+'T12:00:00').toLocaleDateString('pt-BR')+' - </small><span class="chip">'+c.cat+'</span> '+(c.fixa?'<span class="chip fixa">FIXA</span>':'')+'</div><div class="val out">'+fmt(c.valor)+'</div></div><p style="font-size:13px;margin-top:8px">Parcela: '+fmt(parc)+' - '+c.pagas+'/'+c.parcelas+' pagas - Falta: <b>'+fmt(falta)+'</b></p><div class="actions"><button class="del" onclick="excluirConta(\''+c.id+'\')">Excluir</button></div></div>';
+});
+document.getElementById('listaContas').innerHTML=ch;
+}
+setHoje(); document.getElementById('c-venc').value=hojeISO(); render();
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script>
+
+</body></html>
